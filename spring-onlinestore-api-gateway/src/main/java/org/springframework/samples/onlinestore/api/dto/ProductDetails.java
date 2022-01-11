@@ -13,28 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.onlinestore.customers.web;
+package org.springframework.samples.onlinestore.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.validation.constraints.Size;
+import static java.util.stream.Collectors.toList;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
-/**
- * @author mszarlinski@bravurasolutions.com on 2016-12-05.
- */
 @Data
-class PetRequest {
+public class ProductDetails {
+
     private int id;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date birthDate;
-
-    @Size(min = 1)
     private String name;
 
-    private int typeId;
+    private String type;
+
+    private double price;
+
+    private String description;
+
+    private String img_url; 
+
+    /* TODO: Was ist mit primary key? */
 }

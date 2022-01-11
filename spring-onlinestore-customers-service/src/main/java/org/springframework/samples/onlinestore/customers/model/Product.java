@@ -38,17 +38,11 @@ import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
 
 /**
- * Simple JavaBean domain object representing an owner.
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- * @author Sam Brannen
- * @author Michael Isvy
- * @author Maciej Szarlinski
+ * Simple JavaBean domain object representing a product
  */
 @Entity
-@Table(name = "owners")
-public class Owner {
+@Table(name = "products")
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -137,7 +131,7 @@ public class Owner {
 
     public void addPet(Pet pet) {
         getPetsInternal().add(pet);
-        pet.setOwner(this);
+        pet.setProduct(this);
     }*/
 
     @Override

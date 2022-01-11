@@ -16,7 +16,7 @@
 package org.springframework.samples.onlinestore.api.application;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.samples.onlinestore.api.dto.OwnerDetails;
+import org.springframework.samples.onlinestore.api.dto.ProductDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -31,10 +31,10 @@ public class CustomersServiceClient {
 
     private final WebClient.Builder webClientBuilder;
 
-    public Mono<OwnerDetails> getOwner(final int ownerId) {
+    public Mono<ProductDetails> getProduct(final int productId) {
         return webClientBuilder.build().get()
-            .uri("http://customers-service/owners/{ownerId}", ownerId) /* TODO */
+            .uri("http://customers-service/products/{productId}", productId) /* TODO */
             .retrieve()
-            .bodyToMono(OwnerDetails.class);
+            .bodyToMono(ProductDetails.class);
     }
 }
