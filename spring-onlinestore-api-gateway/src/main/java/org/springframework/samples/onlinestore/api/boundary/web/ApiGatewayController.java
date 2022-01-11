@@ -43,7 +43,7 @@ public class ApiGatewayController {
 
     @GetMapping(value = "products/{productId}")
     public Mono<ProductDetails> getProductDetails(final @PathVariable int productId) {
-        return customersServiceClient.getProduct(productId).flatMap(product -> ReactiveCircuitBreaker cb = cbFactory.create("getProductDetails")); /* TODO */
+        return customersServiceClient.getProduct(productId).flatMap(product); /* TODO */
 /*
         return customersServiceClient.getProduct(productId)
             .flatMap(product ->
