@@ -31,22 +31,15 @@ public class OwnerDetails {
 
     private int id;
 
-    private String firstName;
+    private String name;
 
-    private String lastName;
+    private String type;
 
-    private String address;
+    private double price;
 
-    private String city;
+    private String description;
 
-    private String telephone;
+    private String img-url;
 
-    private final List<PetDetails> pets = new ArrayList<>();
-
-    @JsonIgnore
-    public List<Integer> getPetIds() {
-        return pets.stream()
-            .map(PetDetails::getId)
-            .collect(toList());
-    }
+    /* TODO: Was ist mit primary key? */
 }
