@@ -57,7 +57,7 @@ public class ApiGatewayController {
             /*
     public Mono<ProductDetails> getProduct(final int productId) {
         return webClientBuilder.build().get()
-            .uri("http://customers-service/products/{productId}", productId) /* TODO */
+            .uri("http://customers-service/products/{productId}", productId) 
             .retrieve()
             .bodyToMono(ProductDetails.class);
     }
