@@ -43,7 +43,7 @@ public class ApiGatewayController {
 
     @GetMapping(value = "products/{productId}")
     public Mono<ProductDetails> getProductDetails(final @PathVariable int productId) {
-        return customersServiceClient.getProduct(productId); /* TODO */
+        return customersServiceClient.getProduct(productId).flatMap(product); /* TODO */
 /*
         return customersServiceClient.getProduct(productId)
             .flatMap(product ->
@@ -53,5 +53,14 @@ public class ApiGatewayController {
                         return cb.run(it, throwable -> emptyVisitsForPets());
                     })
             );*/
+
+            /*
+    public Mono<ProductDetails> getProduct(final int productId) {
+        return webClientBuilder.build().get()
+            .uri("http://customers-service/products/{productId}", productId) /* TODO */
+            .retrieve()
+            .bodyToMono(ProductDetails.class);
+    }
+    */
     }
 }
