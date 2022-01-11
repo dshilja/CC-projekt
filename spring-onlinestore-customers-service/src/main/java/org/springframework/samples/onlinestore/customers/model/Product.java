@@ -91,7 +91,7 @@ public class Product {
     }
 
     public String getProductPrice() {
-        return this.productPrice.toString;
+        return this.productPrice;
     }
 
     public void setProductPrice(String productPrice) {
