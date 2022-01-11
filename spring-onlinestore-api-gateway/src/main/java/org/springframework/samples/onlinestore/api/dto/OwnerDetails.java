@@ -39,7 +39,7 @@ public class OwnerDetails {
 
     private String description;
 
-    private String img-url;
+    private String img_url; /* TODO: Wohl in datenbank anpassen */
 
     /* TODO: Was ist mit primary key? */
 }
