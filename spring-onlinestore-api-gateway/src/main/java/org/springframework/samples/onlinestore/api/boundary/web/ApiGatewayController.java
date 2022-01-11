@@ -58,20 +58,4 @@ public class ApiGatewayController {
             );
 
     }
-
-    private Function<Visits, OwnerDetails> addVisitsToOwner(OwnerDetails owner) {
-        return visits -> {
-            owner.getPets()
-                .forEach(pet -> pet.getVisits()
-                    .addAll(visits.getItems().stream()
-                        .filter(v -> v.getPetId() == pet.getId())
-                        .collect(Collectors.toList()))
-                );
-            return owner;
-        };
-    }
-
-    private Mono<Visits> emptyVisitsForPets() {
-        return Mono.just(new Visits());
-    }
 }
