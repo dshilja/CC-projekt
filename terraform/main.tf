@@ -58,6 +58,7 @@ resource "azurerm_spring_cloud_service" "example" {
   }
 }
 
+
 resource "azurerm_spring_cloud_app" "api_gateway" {
   name                = var.api_gateway
   resource_group_name = azurerm_resource_group.example.name
