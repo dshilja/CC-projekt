@@ -29,28 +29,6 @@ services:
     ports:
     - 8081:8081
 
-  visits-service:
-    image: springcommunity/spring-onlinestore-visits-service
-    container_name: visits-service
-    mem_limit: 512M
-    depends_on:
-     - config-server
-     - discovery-server
-    entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
-    ports:
-     - 8082:8082
-
-  vets-service:
-    image: springcommunity/spring-onlinestore-vets-service
-    container_name: vets-service
-    mem_limit: 512M
-    depends_on:
-     - config-server
-     - discovery-server
-    entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
-    ports:
-     - 8083:8083
-
   api-gateway:
     image: springcommunity/spring-onlinestore-api-gateway
     container_name: api-gateway
@@ -70,17 +48,6 @@ services:
     - JAVA_OPTS=-XX:+UnlockExperimentalVMOptions -Djava.security.egd=file:/dev/./urandom
     ports:
      - 9411:9411
-
-  admin-server:
-    image: springcommunity/spring-onlinestore-admin-server
-    container_name: admin-server
-    mem_limit: 512M
-    depends_on:
-     - config-server
-     - discovery-server
-    entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
-    ports:
-     - 9090:9090
 
   ## Grafana / Prometheus
 

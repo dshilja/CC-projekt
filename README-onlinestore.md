@@ -8,16 +8,14 @@ and the Eureka Service Discovery from the [Spring Cloud Netflix](https://github.
 
 ## Starting services locally without Docker
 
-Every microservice is a Spring Boot application and can be started locally using IDE or `../mvnw spring-boot:run` command. Please note that supporting services (Config and Discovery Server) must be started before any other application (Customers, Vets, Visits and API).
+Every microservice is a Spring Boot application and can be started locally using IDE or `../mvnw spring-boot:run` command. Please note that supporting services (Config and Discovery Server) must be started before any other application (Customers).
 Startup of Tracing server, Admin server, Grafana and Prometheus is optional.
 If everything goes well, you can access the following services at given location:
 
 - Discovery Server - http://localhost:8761
 - Config Server - http://localhost:8888
 - AngularJS frontend (API Gateway) - http://localhost:8080
-- Customers, Vets and Visits Services - random port, check Eureka Dashboard
 - Tracing Server (Zipkin) - http://localhost:9411/zipkin/ (we use [openzipkin](https://github.com/openzipkin/zipkin/tree/master/zipkin-server))
-- Admin Server (Spring Boot Admin) - http://localhost:9090
 - Grafana Dashboards - http://localhost:3000
 - Prometheus - http://localhost:9091
 
@@ -75,7 +73,7 @@ or download and install the MySQL database (e.g., MySQL Community Server 5.7 GA)
 
 ### Use the Spring 'mysql' profile
 
-To use a MySQL database, you have to start 3 microservices (`visits-service`, `customers-service` and `vets-services`)
+To use a MySQL database, you have to start 3 microservices (`customers-service`)
 with the `mysql` Spring profile. Add the `--spring.profiles.active=mysql` as programm argument.
 
 By default, at startup, database schema will be created and data will be populated.

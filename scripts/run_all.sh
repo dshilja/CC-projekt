@@ -21,9 +21,6 @@ nohup java -jar spring-onlinestore-discovery-server/target/*.jar --server.port=8
 echo "Waiting for discovery server to start"
 sleep 20
 nohup java -jar spring-onlinestore-customers-service/target/*.jar --server.port=8081 --spring.profiles.active=chaos-monkey > target/customers-service.log 2>&1 &
-nohup java -jar spring-onlinestore-visits-service/target/*.jar --server.port=8082 --spring.profiles.active=chaos-monkey > target/visits-service.log 2>&1 &
-nohup java -jar spring-onlinestore-vets-service/target/*.jar --server.port=8083 --spring.profiles.active=chaos-monkey > target/vets-service.log 2>&1 &
 nohup java -jar spring-onlinestore-api-gateway/target/*.jar --server.port=8080 --spring.profiles.active=chaos-monkey > target/gateway-service.log 2>&1 &
-nohup java -jar spring-onlinestore-admin-server/target/*.jar --server.port=9090 --spring.profiles.active=chaos-monkey > target/admin-server.log 2>&1 &
 echo "Waiting for apps to start"
 sleep 60

@@ -25,29 +25,8 @@ class ApiGatewayControllerTest {
     @MockBean
     private CustomersServiceClient customersServiceClient;
 
-    @MockBean
-    private VisitsServiceClient visitsServiceClient;
-
     @Autowired
     private WebTestClient client;
-
-
-    @Test
-    void getProductDetails_withAvailableVisitsService() {
-        ProductDetails product = new ProductDetails();
-        Mockito
-            .when(customersServiceClient.getProduct(1))
-            .thenReturn(Mono.just(product));
-
-        client.get()
-            .uri("/api/gateway/products/1")
-            .exchange()
-            .expectStatus().isOk()
-            //.expectBody(String.class)
-            //.consumeWith(response ->
-            //    Assertions.assertThat(response.getResponseBody()).isEqualTo("Garfield"));
-            .expectBody()
-    }
 
     /**
      * Test Resilience4j fallback method

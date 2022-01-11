@@ -19,9 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreakerFactory;
 import org.springframework.samples.onlinestore.api.application.CustomersServiceClient;
-import org.springframework.samples.onlinestore.api.application.VisitsServiceClient;
 import org.springframework.samples.onlinestore.api.dto.ProductDetails;
-import org.springframework.samples.onlinestore.api.dto.Visits;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +38,6 @@ import java.util.stream.Collectors;
 public class ApiGatewayController {
 
     private final CustomersServiceClient customersServiceClient;
-
-    private final VisitsServiceClient visitsServiceClient;
 
     private final ReactiveCircuitBreakerFactory cbFactory;
 

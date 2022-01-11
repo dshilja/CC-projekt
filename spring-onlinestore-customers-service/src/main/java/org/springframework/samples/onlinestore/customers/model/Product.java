@@ -114,6 +114,7 @@ public class Product {
         this.productImg_url = productImg_url;
     }
 
+/* TODO */
     @Override
     public String toString() {
         return new ToStringCreator(this)

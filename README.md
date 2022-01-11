@@ -276,19 +276,7 @@ Create 5 apps.
         --memory 2 \
         --jvm-options='-Xms2048m -Xmx2048m'
 
-    az spring-cloud app create --name ${ADMIN_SERVER} --instance-count 1 --assign-endpoint true \
-        --memory 2 \
-        --jvm-options='-Xms2048m -Xmx2048m'
-
     az spring-cloud app create --name ${CUSTOMERS_SERVICE} --instance-count 1 \
-        --memory 2 \
-        --jvm-options='-Xms2048m -Xmx2048m'
-
-    az spring-cloud app create --name ${VETS_SERVICE} --instance-count 1 \
-        --memory 2 \
-        --jvm-options='-Xms2048m -Xmx2048m'
-
-    az spring-cloud app create --name ${VISITS_SERVICE} --instance-count 1 \
         --memory 2 \
         --jvm-options='-Xms2048m -Xmx2048m'
 ```
@@ -375,32 +363,8 @@ Deploy Spring Boot applications to Azure.
         --jar-path ${API_GATEWAY_JAR} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql'
 
-
-    az spring-cloud app deploy --name ${ADMIN_SERVER} \
-        --jar-path ${ADMIN_SERVER_JAR} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql'
-
-
     az spring-cloud app deploy --name ${CUSTOMERS_SERVICE} \
         --jar-path ${CUSTOMERS_SERVICE_JAR} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
-        --env MYSQL_SERVER_FULL_NAME=${MYSQL_SERVER_FULL_NAME} \
-              MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME} \
-              MYSQL_SERVER_ADMIN_LOGIN_NAME=${MYSQL_SERVER_ADMIN_LOGIN_NAME} \
-              MYSQL_SERVER_ADMIN_PASSWORD=${MYSQL_SERVER_ADMIN_PASSWORD}
-
-
-    az spring-cloud app deploy --name ${VETS_SERVICE} \
-        --jar-path ${VETS_SERVICE_JAR} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
-        --env MYSQL_SERVER_FULL_NAME=${MYSQL_SERVER_FULL_NAME} \
-              MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME} \
-              MYSQL_SERVER_ADMIN_LOGIN_NAME=${MYSQL_SERVER_ADMIN_LOGIN_NAME} \
-              MYSQL_SERVER_ADMIN_PASSWORD=${MYSQL_SERVER_ADMIN_PASSWORD}
-
-
-    az spring-cloud app deploy --name ${VISITS_SERVICE} \
-        --jar-path ${VISITS_SERVICE_JAR} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
         --env MYSQL_SERVER_FULL_NAME=${MYSQL_SERVER_FULL_NAME} \
               MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME} \
@@ -426,7 +390,7 @@ Open the onlinestore application and try out a few tasks:
 open https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/
 ```
 
-You can also `curl` the REST API exposed by the onlinestore application. The admin REST
+You can also `curl` the REST API exposed by the onlinestore application.
 You can run the following curl commands:
 
 ```bash
@@ -699,12 +663,6 @@ Enable System Assigned Identities for applications and export identities to envi
 ```bash
     az spring-cloud app identity assign --name ${CUSTOMERS_SERVICE}
     export CUSTOMERS_SERVICE_IDENTITY=$(az spring-cloud app show --name ${CUSTOMERS_SERVICE} | jq -r '.identity.principalId')
-
-    az spring-cloud app identity assign --name ${VETS_SERVICE}
-    export VETS_SERVICE_IDENTITY=$(az spring-cloud app show --name ${VETS_SERVICE} | jq -r '.identity.principalId')
-
-    az spring-cloud app identity assign --name ${VISITS_SERVICE}
-    export VISITS_SERVICE_IDENTITY=$(az spring-cloud app show --name ${VISITS_SERVICE} | jq -r '.identity.principalId')
 ```
 
 ### Grant Managed Identities with access to Azure Key Vault
@@ -714,12 +672,6 @@ Add an access policy to Azure Key Vault to allow Managed Identities to read secr
 ```bash
     az keyvault set-policy --name ${KEY_VAULT} \
         --object-id ${CUSTOMERS_SERVICE_IDENTITY} --secret-permissions get list
-
-    az keyvault set-policy --name ${KEY_VAULT} \
-        --object-id ${VETS_SERVICE_IDENTITY} --secret-permissions get list
-
-    az keyvault set-policy --name ${KEY_VAULT} \
-        --object-id ${VISITS_SERVICE_IDENTITY} --secret-permissions get list
 ```
 
 ### Activate applications to load secrets from Azure Key Vault
@@ -729,16 +681,6 @@ Activate applications to load secrets from Azure Key Vault.
 ```bash
     # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI
     az spring-cloud app update --name ${CUSTOMERS_SERVICE} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
-        --env
-
-    # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI
-    az spring-cloud app update --name ${VETS_SERVICE} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
-        --env
-
-    # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI
-    az spring-cloud app update --name ${VISITS_SERVICE} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
         --env
 ```
