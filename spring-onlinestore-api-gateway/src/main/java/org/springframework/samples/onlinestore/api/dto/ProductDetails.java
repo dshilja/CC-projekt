@@ -29,15 +29,15 @@ public class ProductDetails {
 
     private int id;
 
-    private String name;
+    private String productName;
 
-    private String type;
+    private String productType;
 
-    private double price;
+    private double productPrice;
 
-    private String description;
+    private String productDescription;
 
-    private String img_url; 
+    private String productImg_url; 
 
     /* TODO: Was ist mit primary key? */
 }
