@@ -43,7 +43,9 @@ public class ApiGatewayController {
 
     @GetMapping(value = "products/{productId}")
     public Mono<ProductDetails> getProductDetails(final @PathVariable int productId) {
-        return customersServiceClient.getProduct(productId); 
+        return customersServiceClient.getProduct(productId);
+    }
+}
 /*
         return customersServiceClient.getProduct(productId)
             .flatMap(product ->
@@ -62,5 +64,4 @@ public class ApiGatewayController {
             .bodyToMono(ProductDetails.class);
     }
     */
-    }
-}
+
