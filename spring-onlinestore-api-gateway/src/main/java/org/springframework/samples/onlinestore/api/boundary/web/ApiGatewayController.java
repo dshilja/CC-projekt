@@ -20,7 +20,7 @@ import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreakerFactory;
 import org.springframework.samples.onlinestore.api.application.CustomersServiceClient;
 import org.springframework.samples.onlinestore.api.application.VisitsServiceClient;
-import org.springframework.samples.onlinestore.api.dto.OwnerDetails;
+import org.springframework.samples.onlinestore.api.dto.ProductDetails;
 import org.springframework.samples.onlinestore.api.dto.Visits;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,15 +45,15 @@ public class ApiGatewayController {
 
     private final ReactiveCircuitBreakerFactory cbFactory;
 
-    @GetMapping(value = "owners/{ownerId}")
-    public Mono<OwnerDetails> getOwnerDetails(final @PathVariable int ownerId) {
-        return customersServiceClient.getOwner(ownerId); /* TODO */
+    @GetMapping(value = "products/{productId}")
+    public Mono<ProductDetails> getProductDetails(final @PathVariable int productId) {
+        return customersServiceClient.getProduct(productId); /* TODO */
 /*
-        return customersServiceClient.getOwner(ownerId)
-            .flatMap(owner ->
-                visitsServiceClient.getVisitsForPets(owner.getPetIds())
+        return customersServiceClient.getProduct(productId)
+            .flatMap(product ->
+                visitsServiceClient.getVisitsForPets(product.getPetIds())
                     .transform(it -> {
-                        ReactiveCircuitBreaker cb = cbFactory.create("getOwnerDetails");
+                        ReactiveCircuitBreaker cb = cbFactory.create("getProductDetails");
                         return cb.run(it, throwable -> emptyVisitsForPets());
                     })
             );*/

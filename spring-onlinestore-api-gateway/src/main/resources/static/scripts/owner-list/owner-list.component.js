@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ownerList')
-    .component('ownerList', {
-        templateUrl: 'scripts/owner-list/owner-list.template.html',
-        controller: 'OwnerListController'
+angular.module('productList')
+    .component('productList', {
+        templateUrl: 'scripts/product-list/product-list.template.html',
+        controller: 'ProductListController'
     });

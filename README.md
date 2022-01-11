@@ -1,33 +1,35 @@
 ---
 page_type: sample
 languages:
-- java
+  - java
 products:
-- Azure Spring Cloud
+  - Azure Spring Cloud
 description: "Deploy Spring Boot apps using Azure Spring Cloud and MySQL"
 urlFragment: "spring-onlinestore-microservices"
 ---
 
-# Deploy Spring Boot apps using Azure Spring Cloud and MySQL 
+# Deploy Spring Boot apps using Azure Spring Cloud and MySQL
 
 Azure Spring Cloud enables you to easily run a Spring Boot applications on Azure.
 
-This quickstart shows you how to deploy an existing Java Spring Cloud application to Azure. When 
-you're finished, you can continue to manage the application via the Azure CLI or switch to using the 
+This quickstart shows you how to deploy an existing Java Spring Cloud application to Azure. When
+you're finished, you can continue to manage the application via the Azure CLI or switch to using the
 Azure Portal.
 
-* [Deploy Spring Boot apps using Azure Spring Cloud and MySQL](#deploy-spring-boot-apps-using-azure-spring-cloud-and-mysql)
-  * [What will you experience](#what-will-you-experience)
-  * [What you will need](#what-you-will-need)
-  * [Install the Azure CLI extension](#install-the-azure-cli-extension)
-  * [Clone and build the repo](#clone-and-build-the-repo)
-  * [Unit 1 - Deploy and monitor Spring Boot apps](#unit-1---deploy-and-monitor-spring-boot-apps)
-  * [Unit 2 - AUTOMATE deployments using GitHub Actions](#unit-2---automate-deployments-using-github-actions)
-  * [Unit 3 - Manage application secrets using Azure KeyVault](#unit-3---manage-application-secrets-using-azure-keyvault)
-  * [Next Steps](#next-steps)
+- [Deploy Spring Boot apps using Azure Spring Cloud and MySQL](#deploy-spring-boot-apps-using-azure-spring-cloud-and-mysql)
+  - [What will you experience](#what-will-you-experience)
+  - [What you will need](#what-you-will-need)
+  - [Install the Azure CLI extension](#install-the-azure-cli-extension)
+  - [Clone and build the repo](#clone-and-build-the-repo)
+  - [Unit 1 - Deploy and monitor Spring Boot apps](#unit-1---deploy-and-monitor-spring-boot-apps)
+  - [Unit 2 - AUTOMATE deployments using GitHub Actions](#unit-2---automate-deployments-using-github-actions)
+  - [Unit 3 - Manage application secrets using Azure KeyVault](#unit-3---manage-application-secrets-using-azure-keyvault)
+  - [Next Steps](#next-steps)
 
 ## What will you experience
+
 You will:
+
 - Build existing Spring Boot applications
 - Provision an Azure Spring Cloud service instance. If you prefer Terraform, you may also provision using Terraform, see [`README-terraform`](./terraform/README-terraform.md)
 - Deploy applications to Azure
@@ -39,40 +41,38 @@ You will:
 
 ## What you will need
 
-In order to deploy a Java app to cloud, you need 
-an Azure subscription. If you do not already have an Azure 
-subscription, you can activate your 
-[MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) 
-or sign up for a 
-[free Azure account]((https://azure.microsoft.com/free/)).
+In order to deploy a Java app to cloud, you need
+an Azure subscription. If you do not already have an Azure
+subscription, you can activate your
+[MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
+or sign up for a
+[free Azure account](<(https://azure.microsoft.com/free/)>).
 
 In addition, you will need the following:
 
-| [Azure CLI version 2.17.1 or higher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 
-| [Java 8](https://www.azul.com/downloads/azure-only/zulu/?version=java-8-lts&architecture=x86-64-bit&package=jdk) 
-| [Maven](https://maven.apache.org/download.cgi) 
+| [Azure CLI version 2.17.1 or higher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+| [Java 8](https://www.azul.com/downloads/azure-only/zulu/?version=java-8-lts&architecture=x86-64-bit&package=jdk)
+| [Maven](https://maven.apache.org/download.cgi)
 | [MySQL CLI](https://dev.mysql.com/downloads/shell/)
 | [Git](https://git-scm.com/)
 | [`jq` utility](https://stedolan.github.io/jq/download/)
 |
 
-Note -  The [`jq` utility](https://stedolan.github.io/jq/download/). On Windows, download [this Windows port of JQ](https://github.com/stedolan/jq/releases) and add the following to the `~/.bashrc` file: 
-           ```bash
-           alias jq=<JQ Download location>/jq-win64.exe
-           ```
+Note - The [`jq` utility](https://stedolan.github.io/jq/download/). On Windows, download [this Windows port of JQ](https://github.com/stedolan/jq/releases) and add the following to the `~/.bashrc` file:
+`bash alias jq=<JQ Download location>/jq-win64.exe `
 
-Note - The Bash shell. While Azure CLI should behave identically on all environments, shell 
-semantics vary. Therefore, only bash can be used with the commands in this repo. 
-To complete these repo steps on Windows, use Git Bash that accompanies the Windows distribution of 
+Note - The Bash shell. While Azure CLI should behave identically on all environments, shell
+semantics vary. Therefore, only bash can be used with the commands in this repo.
+To complete these repo steps on Windows, use Git Bash that accompanies the Windows distribution of
 Git. Use only Git Bash to complete this training on Windows. Do not use WSL.
 
 ### OR Use Azure Cloud Shell
 
-Or, you can use the Azure Cloud Shell. Azure hosts Azure Cloud Shell, an interactive shell 
-environment that you can use through your browser. You can use the Bash with Cloud Shell 
-to work with Azure services. You can use the Cloud Shell pre-installed commands to run the 
-code in this README without having to install anything on your local environment. To start Azure 
-Cloud Shell: go to [https://shell.azure.com](https://shell.azure.com), or select the 
+Or, you can use the Azure Cloud Shell. Azure hosts Azure Cloud Shell, an interactive shell
+environment that you can use through your browser. You can use the Bash with Cloud Shell
+to work with Azure services. You can use the Cloud Shell pre-installed commands to run the
+code in this README without having to install anything on your local environment. To start Azure
+Cloud Shell: go to [https://shell.azure.com](https://shell.azure.com), or select the
 Launch Cloud Shell button to open Cloud Shell in your browser.
 
 To run the code in this article in Azure Cloud Shell:
@@ -92,8 +92,9 @@ Install the Azure Spring Cloud extension for the Azure CLI using the following c
 ```bash
     az extension add --name spring-cloud
 ```
+
 Note - `spring-cloud` CLI extension `2.1.0` or later is a pre-requisite to enable the
-latest Java in-process agent for Application Insights. If you already 
+latest Java in-process agent for Application Insights. If you already
 have the CLI extension, you may need to upgrade to the latest using --
 
 ```bash
@@ -102,7 +103,7 @@ have the CLI extension, you may need to upgrade to the latest using --
 
 ## Clone and build the repo
 
-### Create a new folder and clone the sample app repository to your Azure Cloud account  
+### Create a new folder and clone the sample app repository to your Azure Cloud account
 
 ```bash
     mkdir source-code
@@ -115,6 +116,7 @@ have the CLI extension, you may need to upgrade to the latest using --
     cd spring-onlinestore-microservices
     mvn clean package -DskipTests -Denv=cloud
 ```
+
 This will take a few minutes.
 
 ## Unit-1 - Deploy and monitor Spring Boot apps
@@ -145,11 +147,13 @@ Open `.scripts/setup-env-variables-azure.sh` and enter the following information
 ```
 
 Then, set the environment:
+
 ```bash
     source .scripts/setup-env-variables-azure.sh
 ```
 
-### Login to Azure 
+### Login to Azure
+
 Login to the Azure CLI and choose your active subscription. Be sure to choose the active subscription that is whitelisted for Azure Spring Cloud
 
 ```bash
@@ -159,7 +163,8 @@ Login to the Azure CLI and choose your active subscription. Be sure to choose th
 ```
 
 ### Create Azure Spring Cloud service instance
-Prepare a name for your Azure Spring Cloud service.  The name must be between 4 and 32 characters long and can contain only lowercase letters, numbers, and hyphens.  The first character of the service name must be a letter and the last character must be either a letter or a number.
+
+Prepare a name for your Azure Spring Cloud service. The name must be between 4 and 32 characters long and can contain only lowercase letters, numbers, and hyphens. The first character of the service name must be a letter and the last character must be either a letter or a number.
 
 Create a resource group to contain your Azure Spring Cloud service.
 
@@ -270,19 +275,19 @@ Create 5 apps.
     az spring-cloud app create --name ${API_GATEWAY} --instance-count 1 --assign-endpoint true \
         --memory 2 \
         --jvm-options='-Xms2048m -Xmx2048m'
-    
+
     az spring-cloud app create --name ${ADMIN_SERVER} --instance-count 1 --assign-endpoint true \
         --memory 2 \
         --jvm-options='-Xms2048m -Xmx2048m'
-    
+
     az spring-cloud app create --name ${CUSTOMERS_SERVICE} --instance-count 1 \
         --memory 2 \
         --jvm-options='-Xms2048m -Xmx2048m'
-    
+
     az spring-cloud app create --name ${VETS_SERVICE} --instance-count 1 \
         --memory 2 \
         --jvm-options='-Xms2048m -Xmx2048m'
-    
+
     az spring-cloud app create --name ${VISITS_SERVICE} --instance-count 1 \
         --memory 2 \
         --jvm-options='-Xms2048m -Xmx2048m'
@@ -301,61 +306,61 @@ Create a MySQL database in Azure Database for MySQL.
      --sku-name GP_Gen5_2 \
      --ssl-enforcement Disabled \
      --version 5.7
-    
+
     // allow access from Azure resources
     az mysql server firewall-rule create --name allAzureIPs \
      --server ${MYSQL_SERVER_NAME} \
      --resource-group ${RESOURCE_GROUP} \
      --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-    
+
     // allow access from your dev machine for testing
     az mysql server firewall-rule create --name devMachine \
      --server ${MYSQL_SERVER_NAME} \
      --resource-group ${RESOURCE_GROUP} \
      --start-ip-address <ip-address-of-your-dev-machine> \
      --end-ip-address <ip-address-of-your-dev-machine>
-    
+
     // increase connection timeout
     az mysql server configuration set --name wait_timeout \
      --resource-group ${RESOURCE_GROUP} \
      --server ${MYSQL_SERVER_NAME} --value 2147483
-    
+
     // SUBSTITUTE values
     mysql -u ${MYSQL_SERVER_ADMIN_LOGIN_NAME} \
      -h ${MYSQL_SERVER_FULL_NAME} -P 3306 -p
-    
+
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 64379
     Server version: 5.6.39.0 MySQL Community Server (GPL)
-    
+
     Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-    
+
     Oracle is a registered trademark of Oracle Corporation and/or its
     affiliates. Other names may be trademarks of their respective
     owners.
-    
+
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-    
+
     mysql> CREATE DATABASE onlinestore;
     Query OK, 1 row affected (0.10 sec)
-    
+
     mysql> CREATE USER 'root' IDENTIFIED BY 'onlinestore';
     Query OK, 0 rows affected (0.11 sec)
-    
+
     mysql> GRANT ALL PRIVILEGES ON onlinestore.* TO 'root';
     Query OK, 0 rows affected (1.29 sec)
-    
+
     mysql> CALL mysql.az_load_timezone();
     Query OK, 3179 rows affected, 1 warning (6.34 sec)
-    
+
     mysql> SELECT name FROM mysql.time_zone_name;
     ...
-    
+
     mysql> quit
     Bye
-    
-    
+
+
     az mysql server configuration set --name time_zone \
      --resource-group ${RESOURCE_GROUP} \
      --server ${MYSQL_SERVER_NAME} --value "US/Pacific"
@@ -369,13 +374,13 @@ Deploy Spring Boot applications to Azure.
     az spring-cloud app deploy --name ${API_GATEWAY} \
         --jar-path ${API_GATEWAY_JAR} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql'
-    
-    
+
+
     az spring-cloud app deploy --name ${ADMIN_SERVER} \
         --jar-path ${ADMIN_SERVER_JAR} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql'
-    
-    
+
+
     az spring-cloud app deploy --name ${CUSTOMERS_SERVICE} \
         --jar-path ${CUSTOMERS_SERVICE_JAR} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
@@ -383,8 +388,8 @@ Deploy Spring Boot applications to Azure.
               MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME} \
               MYSQL_SERVER_ADMIN_LOGIN_NAME=${MYSQL_SERVER_ADMIN_LOGIN_NAME} \
               MYSQL_SERVER_ADMIN_PASSWORD=${MYSQL_SERVER_ADMIN_PASSWORD}
-    
-    
+
+
     az spring-cloud app deploy --name ${VETS_SERVICE} \
         --jar-path ${VETS_SERVICE_JAR} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
@@ -392,8 +397,8 @@ Deploy Spring Boot applications to Azure.
               MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME} \
               MYSQL_SERVER_ADMIN_LOGIN_NAME=${MYSQL_SERVER_ADMIN_LOGIN_NAME} \
               MYSQL_SERVER_ADMIN_PASSWORD=${MYSQL_SERVER_ADMIN_PASSWORD}
-              
-    
+
+
     az spring-cloud app deploy --name ${VISITS_SERVICE} \
         --jar-path ${VISITS_SERVICE_JAR} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
@@ -407,47 +412,43 @@ Deploy Spring Boot applications to Azure.
     az spring-cloud app show --name ${API_GATEWAY} | grep url
 ```
 
-Navigate to the URL provided by the previous command to open the Pet Clinic application.
-    
+Navigate to the URL provided by the previous command to open the Online Shop application.
+
 ![](./media/onlinestore.jpg)
 
 ### Monitor Spring Boot applications
 
 #### Use the onlinestore application and make a few REST API calls
 
-Open the onlinestore application and try out a few tasks - view pet owners and their pets, 
-vets, and schedule pet visits:
+Open the onlinestore application and try out a few tasks:
 
 ```bash
 open https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/
 ```
 
 You can also `curl` the REST API exposed by the onlinestore application. The admin REST
-API allows you to create/update/remove items in Pet Owners, Pets, Vets and Visits.
 You can run the following curl commands:
 
 ```bash
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/owners
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/owners/4
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/owners/ 
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/petTypes
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/owners/3/pets/4
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/owners/6/pets/8/
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/vet/vets
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/visit/owners/6/pets/8/visits
-curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/visit/owners/6/pets/8/visits
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products/4
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products/
 ```
 
 #### Get the log stream for API Gateway and Customers Service
 
-Use the following command to get the latest 100 lines of app console logs from Customers Service. 
+Use the following command to get the latest 100 lines of app console logs from Customers Service.
+
 ```bash
 az spring-cloud app logs -n ${CUSTOMERS_SERVICE} --lines 100
 ```
+
 By adding a `-f` parameter you can get real-time log streaming from the app. Try log streaming for the API Gateway app.
+
 ```bash
 az spring-cloud app logs -n ${API_GATEWAY} -f
 ```
+
 You can use `az spring-cloud app logs -h` to explore more parameters and log stream functionalities.
 
 #### Open Actuator endpoints for API Gateway and Customers Service apps
@@ -470,7 +471,7 @@ open https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/cu
 
 #### Start monitoring Spring Boot apps and dependencies - in Application Insights
 
-Open the Application Insights created by Azure Spring Cloud and start monitoring 
+Open the Application Insights created by Azure Spring Cloud and start monitoring
 Spring Boot applications. You can find the Application Insights in the same Resource Group where
 you created an Azure Spring Cloud service instance.
 
@@ -480,7 +481,7 @@ Navigate to the `Application Map` blade:
 Navigate to the `Performance` blade:
 ![](./media/onlinestore-microservices-performance.jpg)
 
-Navigate to the `Performance/Dependenices` blade - you can see the performance number for dependencies, 
+Navigate to the `Performance/Dependenices` blade - you can see the performance number for dependencies,
 particularly SQL calls:
 ![](./media/onlinestore-microservices-insights-on-dependencies.jpg)
 
@@ -493,27 +494,24 @@ Navigate to the `Failures/Exceptions` blade - you can see a collection of except
 Click on an exception to see the end-to-end transaction and stacktrace in context:
 ![](./media/end-to-end-transaction-details.jpg)
 
-Navigate to the `Metrics` blade - you can see metrics contributed by Spring Boot apps, 
-Spring Cloud modules, and dependencies. 
+Navigate to the `Metrics` blade - you can see metrics contributed by Spring Boot apps,
+Spring Cloud modules, and dependencies.
 The chart below shows `gateway-requests` (Spring Cloud Gateway), `hikaricp_connections`
- (JDBC Connections) and `http_client_requests`.
- 
+(JDBC Connections) and `http_client_requests`.
+
 ![](./media/onlinestore-microservices-metrics.jpg)
 
-Spring Boot registers a lot number of core metrics: JVM, CPU, Tomcat, Logback... 
+Spring Boot registers a lot number of core metrics: JVM, CPU, Tomcat, Logback...
 The Spring Boot auto-configuration enables the instrumentation of requests handled by Spring MVC.
-All those three REST controllers `OwnerResource`, `PetResource` and `VisitResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
+All those three REST controllers `ProductResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
 
-* `customers-service` application has the following custom metrics enabled:
-  * @Timed: `onlinestore.owner`
-  * @Timed: `onlinestore.pet`
-* `visits-service` application has the following custom metrics enabled:
-  * @Timed: `onlinestore.visit`
+- `customers-service` application has the following custom metrics enabled:
+  - @Timed: `onlinestore.product`
 
 You can see these custom metrics in the `Metrics` blade:
 ![](./media/onlinestore-microservices-custom-metrics.jpg)
 
-You can use the Availability Test feature in Application Insights and monitor 
+You can use the Availability Test feature in Application Insights and monitor
 the availability of applications:
 ![](./media/onlinestore-microservices-availability.jpg)
 
@@ -522,39 +520,43 @@ Navigate to the `Live Metrics` blade - you can see live metrics on screen with l
 
 #### Start monitoring onlinestore logs and metrics in Azure Log Analytics
 
-Open the Log Analytics that you created - you can find the Log Analytics in the same 
+Open the Log Analytics that you created - you can find the Log Analytics in the same
 Resource Group where you created an Azure Spring Cloud service instance.
 
-In the Log Analyics page, selects `Logs` blade and run any of the sample queries supplied below 
+In the Log Analyics page, selects `Logs` blade and run any of the sample queries supplied below
 for Azure Spring Cloud.
 
 Type and run the following Kusto query to see application logs:
+
 ```sql
-    AppPlatformLogsforSpring 
-    | where TimeGenerated > ago(24h) 
+    AppPlatformLogsforSpring
+    | where TimeGenerated > ago(24h)
     | limit 500
     | sort by TimeGenerated
 ```
 
 Type and run the following Kusto query to see `customers-service` application logs:
+
 ```sql
-    AppPlatformLogsforSpring 
+    AppPlatformLogsforSpring
     | where AppName has "customers"
     | limit 500
     | sort by TimeGenerated
 ```
 
-Type and run the following Kusto query  to see errors and exceptions thrown by each app:
+Type and run the following Kusto query to see errors and exceptions thrown by each app:
+
 ```sql
-    AppPlatformLogsforSpring 
+    AppPlatformLogsforSpring
     | where Log contains "error" or Log contains "exception"
     | extend FullAppName = strcat(ServiceName, "/", AppName)
     | summarize count_per_app = count() by FullAppName, ServiceName, AppName, _ResourceId
-    | sort by count_per_app desc 
+    | sort by count_per_app desc
     | render piechart
 ```
 
 Type and run the following Kusto query to see all in the inbound calls into Azure Spring Cloud:
+
 ```sql
     AppPlatformIngressLogs
     | project TimeGenerated, RemoteAddr, Host, Request, Status, BodyBytesSent, RequestTime, ReqId, RequestHeaders
@@ -563,6 +565,7 @@ Type and run the following Kusto query to see all in the inbound calls into Azur
 
 Type and run the following Kusto query to see all the logs from the managed Spring Cloud
 Config Server managed by Azure Spring Cloud:
+
 ```sql
     AppPlatformSystemLogs
     | where LogType contains "ConfigServer"
@@ -572,6 +575,7 @@ Config Server managed by Azure Spring Cloud:
 
 Type and run the following Kusto query to see all the logs from the managed Spring Cloud
 Service Registry managed by Azure Spring Cloud:
+
 ```sql
     AppPlatformSystemLogs
     | where LogType contains "ServiceRegistry"
@@ -580,18 +584,24 @@ Service Registry managed by Azure Spring Cloud:
 ```
 
 ## Unit-2 - Automate deployments using GitHub Actions
-### Prerequisites 
+
+### Prerequisites
+
 To get started with deploying this sample app from GitHub Actions, please:
+
 1. Complete the sections above with your MySQL, Azure Spring Cloud instances and apps created.
 2. Fork this repository and turn on GitHub Actions in your fork
 
 ### Prepare secrets in your Key Vault
+
 If you do not have a Key Vault yet, run the following commands to provision a Key Vault:
+
 ```bash
     az keyvault create --name ${KEY_VAULT} -g ${RESOURCE_GROUP}
 ```
 
 Add the MySQL secrets to your Key Vault:
+
 ```bash
     az keyvault secret set --vault-name ${KEY_VAULT} --name "MYSQL-SERVER-FULL-NAME" --value ${MYSQL_SERVER_FULL_NAME}
     az keyvault secret set --vault-name ${KEY_VAULT} --name "MYSQL-DATABASE-NAME" --value ${MYSQL_DATABASE_NAME}
@@ -600,45 +610,56 @@ Add the MySQL secrets to your Key Vault:
 ```
 
 Create a service principle with enough scope/role to manage your Azure Spring Cloud instance:
+
 ```bash
     az ad sp create-for-rbac --role contributor --scopes /subscriptions/${SUBSCRIPTION} --sdk-auth
 ```
+
 With results:
+
 ```json
-    {
-        "clientId": "<GUID>",
-        "clientSecret": "<GUID>",
-        "subscriptionId": "<GUID>",
-        "tenantId": "<GUID>",
-        "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-        "resourceManagerEndpointUrl": "https://management.azure.com/",
-        "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-        "galleryEndpointUrl": "https://gallery.azure.com/",
-        "managementEndpointUrl": "https://management.core.windows.net/"
-    }
+{
+  "clientId": "<GUID>",
+  "clientSecret": "<GUID>",
+  "subscriptionId": "<GUID>",
+  "tenantId": "<GUID>",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
 ```
+
 Add them as secrets to your Key Vault:
+
 ```bash
     az keyvault secret set --vault-name ${KEY_VAULT} --name "AZURE-CREDENTIALS-FOR-SPRING" --value "<results above>"
 ```
 
 ### Grant access to Key Vault with Service Principal
+
 To generate a key to access the Key Vault, execute command below:
+
 ```bash
     az ad sp create-for-rbac --role contributor --scopes /subscriptions/${SUBSCRIPTION}/resourceGroups/${RESOURCE_GROUP}/providers/Microsoft.KeyVault/vaults/${KEY_VAULT} --sdk-auth
 ```
+
 Then, follow [the steps here](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-github-actions-key-vault#add-access-policies-for-the-credential) to add access policy for the Service Principal.
 
 In the end, add this service principal as secret named "AZURE_CREDENTIALS" in your forked GitHub repo following [the steps here](https://docs.microsoft.com/azure/spring-cloud/how-to-github-actions?pivots=programming-language-java#set-up-github-repository-and-authenticate-1).
 
 ### Customize your workflow
+
 Finally, edit the workflow file `.github/workflows/action.yml` in your forked repo to fill in the subscription ID, Azure Spring Cloud instance name, and Key Vault name that you just created:
+
 ```yml
 env:
   AZURE_SUBSCRIPTION: subscription-id # customize this
   SPRING_CLOUD_SERVICE: azure-spring-cloud-name # customize this
   KEYVAULT: your-keyvault-name # customize this
 ```
+
 Once you push this change, you will see GitHub Actions triggered to build and deploy all the apps in the repo to your Azure Spring Cloud instance.
 ![](./media/automate-deployments-using-github-actions.png)
 
@@ -660,16 +681,16 @@ Store database connection secrets in Key Vault.
 ```bash
     az keyvault secret set --vault-name ${KEY_VAULT} \
         --name "MYSQL-SERVER-FULL-NAME" --value ${MYSQL_SERVER_FULL_NAME}
-        
+
     az keyvault secret set --vault-name ${KEY_VAULT} \
         --name "MYSQL-DATABASE-NAME" --value ${MYSQL_DATABASE_NAME}
-        
+
     az keyvault secret set --vault-name ${KEY_VAULT} \
         --name "MYSQL-SERVER-ADMIN-LOGIN-NAME" --value ${MYSQL_SERVER_ADMIN_LOGIN_NAME}
-        
+
     az keyvault secret set --vault-name ${KEY_VAULT} \
         --name "MYSQL-SERVER-ADMIN-PASSWORD" --value ${MYSQL_SERVER_ADMIN_PASSWORD}
-```                      
+```
 
 ### Enable Managed Identities for applications in Azure Spring Cloud
 
@@ -678,10 +699,10 @@ Enable System Assigned Identities for applications and export identities to envi
 ```bash
     az spring-cloud app identity assign --name ${CUSTOMERS_SERVICE}
     export CUSTOMERS_SERVICE_IDENTITY=$(az spring-cloud app show --name ${CUSTOMERS_SERVICE} | jq -r '.identity.principalId')
-    
+
     az spring-cloud app identity assign --name ${VETS_SERVICE}
     export VETS_SERVICE_IDENTITY=$(az spring-cloud app show --name ${VETS_SERVICE} | jq -r '.identity.principalId')
-    
+
     az spring-cloud app identity assign --name ${VISITS_SERVICE}
     export VISITS_SERVICE_IDENTITY=$(az spring-cloud app show --name ${VISITS_SERVICE} | jq -r '.identity.principalId')
 ```
@@ -693,10 +714,10 @@ Add an access policy to Azure Key Vault to allow Managed Identities to read secr
 ```bash
     az keyvault set-policy --name ${KEY_VAULT} \
         --object-id ${CUSTOMERS_SERVICE_IDENTITY} --secret-permissions get list
-        
+
     az keyvault set-policy --name ${KEY_VAULT} \
         --object-id ${VETS_SERVICE_IDENTITY} --secret-permissions get list
-        
+
     az keyvault set-policy --name ${KEY_VAULT} \
         --object-id ${VISITS_SERVICE_IDENTITY} --secret-permissions get list
 ```
@@ -710,13 +731,13 @@ Activate applications to load secrets from Azure Key Vault.
     az spring-cloud app update --name ${CUSTOMERS_SERVICE} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
         --env
-    
-    # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI    
+
+    # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI
     az spring-cloud app update --name ${VETS_SERVICE} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
         --env
-    
-    # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI       
+
+    # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI
     az spring-cloud app update --name ${VISITS_SERVICE} \
         --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
         --env
@@ -736,12 +757,12 @@ In this quickstart, you've deployed an existing Spring Boot-based app using Azur
 
 ## Credits
 
-This Spring microservices sample is forked from 
-[spring-onlinestore/spring-onlinestore-microservices](https://github.com/spring-onlinestore/spring-onlinestore-microservices) - see [onlinestore README](./README-onlinestore.md). 
+This Spring microservices sample is forked from
+[spring-onlinestore/spring-onlinestore-microservices](https://github.com/spring-onlinestore/spring-onlinestore-microservices) - see [onlinestore README](./README-onlinestore.md).
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 

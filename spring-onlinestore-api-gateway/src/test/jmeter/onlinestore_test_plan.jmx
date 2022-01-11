@@ -76,7 +76,7 @@
           <stringProp name="RandomTimer.range">100.0</stringProp>
         </GaussianRandomTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="All Owners" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="All Products" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Variables pr�-d�finies" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -84,7 +84,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/customer/owners</stringProp>
+          <stringProp name="HTTPSampler.path">/api/customer/products</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -106,7 +106,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add Owner" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add Product" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -126,7 +126,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/customer/owners</stringProp>
+          <stringProp name="HTTPSampler.path">/api/customer/products</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -147,14 +147,14 @@
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
           <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Owner ID Extractor" enabled="true">
-            <stringProp name="JSONPostProcessor.referenceNames">OWNER_ID</stringProp>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Product ID Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">PRODUCT_ID</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Owner Details" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Product Details" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Variables pr�-d�finies" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -162,7 +162,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/gateway/owners/${OWNER_ID}</stringProp>
+          <stringProp name="HTTPSampler.path">/api/gateway/products/${PRODUCT_ID}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -184,18 +184,18 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Owner" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Product" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{  &#xd;
-   &quot;id&quot;:&quot;${OWNER_ID}&quot;,&#xd;
+   &quot;id&quot;:&quot;${PRODUCT_ID}&quot;,&#xd;
    &quot;name&quot;:&quot;Name&quot;,&#xd;
-   &quot;type&quot;:&quot;Type${OWNER_ID}&quot;,&#xd;
-   &quot;price&quot;:&quot;Price${OWNER_ID}&quot;,&#xd;
-   &quot;description&quot;:&quot;Desscription${OWNER_ID}&quot;,&#xd;
+   &quot;type&quot;:&quot;Type${PRODUCT_ID}&quot;,&#xd;
+   &quot;price&quot;:&quot;Price${PRODUCT_ID}&quot;,&#xd;
+   &quot;description&quot;:&quot;Desscription${PRODUCT_ID}&quot;,&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -205,7 +205,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/customer/owners/${OWNER_ID}</stringProp>
+          <stringProp name="HTTPSampler.path">/api/customer/products/${PRODUCT_ID}</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

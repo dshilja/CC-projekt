@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('ownerList')
-    .controller('OwnerListController', ['$http', function ($http) {
+angular.module('productList')
+    .controller('ProductListController', ['$http', function ($http) {
         var self = this;
 
-        $http.get('api/customer/owners').then(function (resp) {
-            self.owners = resp.data;
+        $http.get('api/customer/products').then(function (resp) {
+            self.products = resp.data;
         });
     }]);

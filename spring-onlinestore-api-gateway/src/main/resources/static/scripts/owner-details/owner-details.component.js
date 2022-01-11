@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ownerDetails')
-    .component('ownerDetails', {
-        templateUrl: 'scripts/owner-details/owner-details.template.html',
-        controller: 'OwnerDetailsController'
+angular.module('productDetails')
+    .component('productDetails', {
+        templateUrl: 'scripts/product-details/product-details.template.html',
+        controller: 'ProductDetailsController'
     });

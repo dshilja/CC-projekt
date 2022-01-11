@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('ownerDetails', ['ui.router'])
+angular.module('productDetails', ['ui.router'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
-            .state('ownerDetails', {
+            .state('productDetails', {
                 parent: 'app',
-                url: '/owners/details/:ownerId',
-                template: '<owner-details></owner-details>'
+                url: '/products/details/:productId',
+                template: '<product-details></product-details>'
             })
     }]);
