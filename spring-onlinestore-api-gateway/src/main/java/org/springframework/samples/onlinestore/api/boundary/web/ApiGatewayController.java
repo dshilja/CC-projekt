@@ -54,8 +54,6 @@ public class ApiGatewayController {
                         ReactiveCircuitBreaker cb = cbFactory.create("getOwnerDetails");
                         return cb.run(it, throwable -> emptyVisitsForPets());
                     })
-                    .map(addVisitsToOwner(owner))
             );
-
     }
 }
