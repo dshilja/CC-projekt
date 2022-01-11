@@ -33,7 +33,7 @@ public class ProductDetails {
 
     private String productType;
 
-    private double productPrice;
+    private String productPrice;
 
     private String productDescription;
 

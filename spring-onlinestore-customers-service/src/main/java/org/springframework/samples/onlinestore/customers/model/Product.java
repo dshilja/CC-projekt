@@ -58,7 +58,7 @@ public class Product {
 
     @Column(name = "product_price")
     @NotEmpty
-    private double productPrice;
+    private String productPrice;
 
     @Column(name = "product_description")
     @NotEmpty
@@ -91,7 +91,7 @@ public class Product {
     }
 
     public String getProductPrice() {
-        return this.productPrice;
+        return this.productPrice.toString;
     }
 
     public void setProductPrice(String productPrice) {
