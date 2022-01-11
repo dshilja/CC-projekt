@@ -70,8 +70,6 @@ public class Product {
     private String productImg_url;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "product")
-    /*private Set<Pet> pets;*/ //TODO needed?
-
     public Integer getId() {
         return id;
     }
@@ -115,25 +113,8 @@ public class Product {
     public void setProductImg_url(String productImg_url) {
         this.productImg_url = productImg_url;
     }
-/*
-    protected Set<Pet> getPetsInternal() {
-        if (this.pets == null) {
-            this.pets = new HashSet<>();
-        }
-        return this.pets;
-    }
 
-    public List<Pet> getPets() {
-        final List<Pet> sortedPets = new ArrayList<>(getPetsInternal());
-        PropertyComparator.sort(sortedPets, new MutableSortDefinition("name", true, true));
-        return Collections.unmodifiableList(sortedPets);
-    }
-
-    public void addPet(Pet pet) {
-        getPetsInternal().add(pet);
-        pet.setProduct(this);
-    }*/
-
+/* TODO */
     @Override
     public String toString() {
         return new ToStringCreator(this)

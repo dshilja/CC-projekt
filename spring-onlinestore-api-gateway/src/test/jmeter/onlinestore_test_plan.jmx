@@ -148,7 +148,7 @@
           </ResponseAssertion>
           <hashTree/>
           <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Product ID Extractor" enabled="true">
-            <stringProp name="JSONPostProcessor.referenceNames">OWNER_ID</stringProp>
+            <stringProp name="JSONPostProcessor.referenceNames">PRODUCT_ID</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
           </JSONPostProcessor>
@@ -162,7 +162,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/gateway/products/${OWNER_ID}</stringProp>
+          <stringProp name="HTTPSampler.path">/api/gateway/products/${PRODUCT_ID}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -191,11 +191,11 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{  &#xd;
-   &quot;id&quot;:&quot;${OWNER_ID}&quot;,&#xd;
+   &quot;id&quot;:&quot;${PRODUCT_ID}&quot;,&#xd;
    &quot;name&quot;:&quot;Name&quot;,&#xd;
-   &quot;type&quot;:&quot;Type${OWNER_ID}&quot;,&#xd;
-   &quot;price&quot;:&quot;Price${OWNER_ID}&quot;,&#xd;
-   &quot;description&quot;:&quot;Desscription${OWNER_ID}&quot;,&#xd;
+   &quot;type&quot;:&quot;Type${PRODUCT_ID}&quot;,&#xd;
+   &quot;price&quot;:&quot;Price${PRODUCT_ID}&quot;,&#xd;
+   &quot;description&quot;:&quot;Desscription${PRODUCT_ID}&quot;,&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -205,7 +205,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/customer/products/${OWNER_ID}</stringProp>
+          <stringProp name="HTTPSampler.path">/api/customer/products/${PRODUCT_ID}</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

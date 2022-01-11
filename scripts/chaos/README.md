@@ -8,11 +8,11 @@ In order to active Spring Boot Chaos Monkey's assault options and component inst
 
 ```bash
 $ ./scripts/chaos/call_chaos.sh
-usage: ./scripts/chaos/call_chaos.sh: <customers|visits|vets> <attacks_enable_exception|attacks_enable_killapplication|attacks_enable_latency|attacks_enable_memory|watcher_enable_component|watcher_enable_controller|watcher_enable_repository|watcher_enable_restcontroller|watcher_enable_service|watcher_disable>
-First pick either customers, visits or vets
+usage: ./scripts/chaos/call_chaos.sh: <customers> <attacks_enable_exception|attacks_enable_killapplication|attacks_enable_latency|attacks_enable_memory|watcher_enable_component|watcher_enable_controller|watcher_enable_repository|watcher_enable_restcontroller|watcher_enable_service|watcher_disable>
+First pick either customers
 Then pick what to enable. Order matters!
 Example
-./scripts/chaos/call_chaos.sh visits attacks_enable_exception watcher_enable_restcontroller
+./scripts/chaos/call_chaos.sh attacks_enable_exception watcher_enable_restcontroller
 ```
 
 The script takes in at minimum 2 parameters. First provides the name of the application for which you want to turn on Chaos Monkey features. The subsequent ones will enable attacks and watchers. The name of the desired feature maps to a json file that gets updated to `http://localhost:${PORT}/actuator/chaosmonkey/assaults` and `http://localhost:${PORT}/actuator/chaosmonkey/watchers` respectively. Example of enabling exception assault via rest controllers for the visits microservice:

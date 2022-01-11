@@ -442,30 +442,7 @@
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
         "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(onlinestore_pet_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "instant": true,
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "title": "Pets Created",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      }
     },
     {
       "cacheTimeout": null,
@@ -524,30 +501,7 @@
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
         "show": false
-      },
-      "tableColumn": "Value",
-      "targets": [
-        {
-          "expr": "sum(onlinestore_visit_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "instant": true,
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "title": "Visit Created",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      }
     },
     {
       "aliasColors": {},
@@ -598,6 +552,8 @@
           "refId": "A"
         },
         {
+<<<<<<< HEAD
+=======
           "expr": "sum(onlinestore_pet_seconds_count{method=\"POST\", status=\"201\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -612,6 +568,7 @@
           "refId": "C"
         },
         {
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
           "expr": "sum(onlinestore_product_seconds_count{method=\"PUT\", status=\"204\"})",
           "format": "time_series",
           "intervalFactor": 1,

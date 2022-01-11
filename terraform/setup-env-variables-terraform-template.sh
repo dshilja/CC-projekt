@@ -8,17 +8,11 @@ export REGION=westus2
 # ==== Service and App Instances ====
 export SPRING_CLOUD_SERVICE=springcloudvj # customize this
 export API_GATEWAY=api-gateway
-export ADMIN_SERVER=admin-server
 export CUSTOMERS_SERVICE=customers-service
-export VETS_SERVICE=vets-service
-export VISITS_SERVICE=visits-service
 
 # ==== JARS ====
 export API_GATEWAY_JAR=spring-onlinestore-api-gateway/target/spring-onlinestore-api-gateway-2.2.1.jar
-export ADMIN_SERVER_JAR=spring-onlinestore-admin-server/target/spring-onlinestore-admin-server-2.2.1.jar
 export CUSTOMERS_SERVICE_JAR=spring-onlinestore-customers-service/target/spring-onlinestore-customers-service-2.2.1.jar
-export VETS_SERVICE_JAR=spring-onlinestore-vets-service/target/spring-onlinestore-vets-service-2.2.1.jar
-export VISITS_SERVICE_JAR=spring-onlinestore-visits-service/target/spring-onlinestore-visits-service-2.2.1.jar
 
 # ==== MYSQL INFO ====
 export MYSQL_SERVER_NAME=mysqlservervj2 # customize this
@@ -33,10 +27,7 @@ export TF_VAR_resource_group=${RESOURCE_GROUP} # customize this
 export TF_VAR_region=${REGION}
 export TF_VAR_spring_cloud_service=${SPRING_CLOUD_SERVICE} # customize this
 export TF_VAR_api_gateway=${API_GATEWAY}
-export TF_VAR_admin_server=${ADMIN_SERVER}
 export TF_VAR_customers_service=${CUSTOMERS_SERVICE}
-export TF_VAR_vets_service=${VETS_SERVICE}
-export TF_VAR_visits_service=${VISITS_SERVICE}
 
 export TF_VAR_mysql_server_name=${MYSQL_SERVER_NAME} # customize this
 export TF_VAR_mysql_server_admin_name=${MYSQL_SERVER_ADMIN_NAME} # customize this

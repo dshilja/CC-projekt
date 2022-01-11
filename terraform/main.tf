@@ -16,21 +16,9 @@ variable "api_gateway" {
   type    = string
   default = "api-gateway"
 }
-variable "admin_server" {
-  type    = string
-  default = "admin-server"
-}
 variable "customers_service" {
   type    = string
   default = "customers-service"
-}
-variable "visits_service" {
-  type    = string
-  default = "visits-service"
-}
-variable "vets_service" {
-  type    = string
-  default = "vets-service"
 }
 variable "mysql_server_admin_name" {
   type    = string
@@ -76,31 +64,11 @@ resource "azurerm_spring_cloud_app" "api_gateway" {
   service_name        = azurerm_spring_cloud_service.example.name
 }
 
-
-resource "azurerm_spring_cloud_app" "admin_server" {
-  name                = var.admin_server
-  resource_group_name = azurerm_resource_group.example.name
-  service_name        = azurerm_spring_cloud_service.example.name
-}
-
 resource "azurerm_spring_cloud_app" "customers_service" {
   name                = var.customers_service
   resource_group_name = azurerm_resource_group.example.name
   service_name        = azurerm_spring_cloud_service.example.name
 }
-
-resource "azurerm_spring_cloud_app" "vets_service" {
-  name                = var.vets_service
-  resource_group_name = azurerm_resource_group.example.name
-  service_name        = azurerm_spring_cloud_service.example.name
-}
-
-resource "azurerm_spring_cloud_app" "visits_service" {
-  name                = var.visits_service
-  resource_group_name = azurerm_resource_group.example.name
-  service_name        = azurerm_spring_cloud_service.example.name
-}
-
 
 resource "azurerm_mysql_server" "example" {
   name                = local.mysql_server_name

@@ -78,7 +78,13 @@ spring:
   datasource:
     schema: classpath*:db/mysql/schema.sql
     data: classpath*:db/mysql/data.sql
+<<<<<<< HEAD
+    url: jdbc:mysql://localhost:3306/onlineshop?useSSL=false
+    username: root
+    password: onlineshop
+=======
     url: jdbc:mysql://localhost:3306/onlinestore?useSSL=false
     username: root
     password: onlinestore
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
     initialization-mode: ALWAYS

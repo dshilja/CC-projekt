@@ -16,10 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-onlinestore-admin-server</module>
         <module>spring-onlinestore-customers-service</module>
-        <module>spring-onlinestore-vets-service</module>
-        <module>spring-onlinestore-visits-service</module>
         <module>spring-onlinestore-config-server</module>
         <module>spring-onlinestore-discovery-server</module>
         <module>spring-onlinestore-api-gateway</module>
