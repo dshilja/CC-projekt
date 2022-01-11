@@ -579,6 +579,8 @@ Create a service principle with enough scope/role to manage your Azure Spring Cl
     az ad sp create-for-rbac --role contributor --scopes /subscriptions/${SUBSCRIPTION} --sdk-auth
 ```
 
+    az ad sp create-for-rbac --role contributor --scopes /subscriptions/362534fd-8276-4c5f-821b-d455145d4d1f --sdk-auth
+
 With results:
 
 ```json
@@ -599,6 +601,8 @@ Add them as secrets to your Key Vault:
 
 ```bash
     az keyvault secret set --vault-name ${KEY_VAULT} --name "AZURE-CREDENTIALS-FOR-SPRING" --value "<results above>"
+
+    az keyvault secret set --vault-name tresory123456 --name AZURE-CREDENTIALS-FOR-SPRING --value clientId": "61538ed3-cdac-4958-be57-99227d65d1e2","clientSecret": "s1roZJ.A.iT5MJFcPLu-xEyjYq5mcETTQ0","subscriptionId": "362534fd-8276-4c5f-821b-d455145d4d1f","tenantId": "bb927958-53f8-4022-b5d2-635ebb42aec1","activeDirectoryEndpointUrl": "https://login.microsoftonline.com","resourceManagerEndpointUrl": "https://management.azure.com/","activeDirectoryGraphResourceId": "https://graph.windows.net/","sqlManagementEndpointUrl": "https://management.core.windows.net:8443/","galleryEndpointUrl": "https://gallery.azure.com/","managementEndpointUrl": "https://management.core.windows.net/
 ```
 
 ### Grant access to Key Vault with Service Principal
@@ -606,7 +610,9 @@ Add them as secrets to your Key Vault:
 To generate a key to access the Key Vault, execute command below:
 
 ```bash
-    az ad sp create-for-rbac --role contributor --scopes /subscriptions/${SUBSCRIPTION}/resourceGroups/${RESOURCE_GROUP}/providers/Microsoft.KeyVault/vaults/${KEY_VAULT} --sdk-auth
+    az ad sp create-for-rbac --role contributor --scopes /subscriptions/${SUBSCRIPTION}/resourceGroups/my/providers/Microsoft.KeyVault/vaults/${KEY_VAULT} --sdk-auth
+
+        az ad sp create-for-rbac --role contributor --scopes /subscriptions/362534fd-8276-4c5f-821b-d455145d4d1f/resourceGroups/mygroup404/providers/Microsoft.KeyVault/vaults/tresory123456 --sdk-auth
 ```
 
 Then, follow [the steps here](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-github-actions-key-vault#add-access-policies-for-the-credential) to add access policy for the Service Principal.
