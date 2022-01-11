@@ -2,7 +2,7 @@ name: Deploy to Azure Spring Cloud with Key Vault
 on: [push]
 
 env:
-  AZURE_SUBSCRIPTION: bb927958-53f8-4022-b5d2-635ebb42aec1 # customize this
+  AZURE_SUBSCRIPTION: 362534fd-8276-4c5f-821b-d455145d4d1f # customize this
   SPRING_CLOUD_SERVICE: bcdas-asdf # customize this
   KEYVAULT: tresory123456 # customize this
   # ==== APPS ====:
