@@ -20,13 +20,13 @@
     <tr ng-repeat="product in $ctrl.products | filter:$ctrl.query track by product.id">
         <td>
             <a ui-sref="productDetails({ productId: product.id })">
-                {{product.name}}
+                {{product.product_name}}
             </a>
         </td>
         <!-- <td class="hidden-sm hidden-xs">{{product.address}}</td> -->
-        <td>{{product.type}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.description}}</td>
+        <td>{{product.product_type}}</td>
+        <td>{{product.product_price}}</td>
+        <td>{{product.product_description}}</td>
         <td class="hidden-xs"><span ng-repeat="pet in product.pets track by pet.id"></span></td>
         <!-- TODO: Schauen, ob useful kind for style <td class="hidden-xs"><span ng-repeat="pet in product.pets track by pet.id">{{pet.name + ' '}}</span></td> --> 
     </tr>
