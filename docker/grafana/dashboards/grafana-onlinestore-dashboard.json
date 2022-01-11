@@ -552,23 +552,6 @@
           "refId": "A"
         },
         {
-<<<<<<< HEAD
-=======
-          "expr": "sum(onlinestore_pet_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "pet create",
-          "refId": "B"
-        },
-        {
-          "expr": "sum(onlinestore_visit_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "visit create",
-          "refId": "C"
-        },
-        {
->>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
           "expr": "sum(onlinestore_product_seconds_count{method=\"PUT\", status=\"204\"})",
           "format": "time_series",
           "intervalFactor": 1,

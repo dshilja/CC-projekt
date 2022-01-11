@@ -95,7 +95,7 @@
                     "configServer": {
                         "gitProperty": {
                             "repositories": [],
-                            "uri": "https://github.com/selvasingh/spring-onlinestore-microservices-config",
+                            "uri": "https://github.com/dshilja/CC-projekt/tree/main/config",
                             "searchPaths": [
                             ]
                         }

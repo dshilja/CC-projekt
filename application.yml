@@ -3,7 +3,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/azure-samples/spring-onlinestore-microservices-config
+          uri: https://github.com/dshilja/CC-projekt/tree/main/config
         native:
           search-locations: classpath:.
   profiles:
