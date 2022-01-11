@@ -58,7 +58,7 @@ public class Product {
 
     @Column(name = "product_price")
     @NotEmpty
-    private String productPrice;
+    private double productPrice;
 
     @Column(name = "product_description")
     @NotEmpty
