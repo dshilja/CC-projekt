@@ -54,74 +54,74 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "first_name")
+    @Column(name = "product_name")
     @NotEmpty
-    private String firstName;
+    private String productName;
 
-    @Column(name = "last_name")
+    @Column(name = "product_type")
     @NotEmpty
-    private String lastName;
+    private String product_Tpe;
 
-    @Column(name = "address")
+    @Column(name = "product_price")
     @NotEmpty
-    private String address;
+    private String productPrice;
 
-    @Column(name = "city")
+    @Column(name = "product_description")
     @NotEmpty
-    private String city;
+    private String productDescription;
 
-    @Column(name = "telephone")
+    @Column(name = "product_img_url")
     @NotEmpty
     @Digits(fraction = 0, integer = 10)
-    private String telephone;
+    private String productImg_url;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "owner")
-    private Set<Pet> pets;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "product")
+    /*private Set<Pet> pets;*/ //TODO needed?
 
     public Integer getId() {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setFirstName(final String firstName) {
-        this.firstName = firstName;
+    public void setProductName(final String productName) {
+        this.productName = productName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getProductType() {
+        return productType;
     }
 
-    public void setLastName(final String lastName) {
-        this.lastName = lastName;
+    public void setProductType(final String productType) {
+        this.productType = productType;
     }
 
-    public String getAddress() {
-        return this.address;
+    public String getProductPrice() {
+        return this.productPrice;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setProductPrice(String productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public String getCity() {
-        return this.city;
+    public String getProductDescription() {
+        return this.productDescription;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public String getTelephone() {
-        return this.telephone;
+    public String getProductImg_url() {
+        return this.productImg_url;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setProductImg_url(String productImg_url) {
+        this.productImg_url = productImg_url;
     }
-
+/*
     protected Set<Pet> getPetsInternal() {
         if (this.pets == null) {
             this.pets = new HashSet<>();
@@ -138,18 +138,18 @@ public class Owner {
     public void addPet(Pet pet) {
         getPetsInternal().add(pet);
         pet.setOwner(this);
-    }
+    }*/
 
     @Override
     public String toString() {
         return new ToStringCreator(this)
 
             .append("id", this.getId())
-            .append("lastName", this.getLastName())
-            .append("firstName", this.getFirstName())
-            .append("address", this.address)
-            .append("city", this.city)
-            .append("telephone", this.telephone)
+            .append("productType", this.getProductType())
+            .append("productName", this.getProductName())
+            .append("productPrice", this.productPrice)
+            .append("productDescription", this.productDescription)
+            .append("productImg_url", this.productImg_url)
             .toString();
     }
 }
