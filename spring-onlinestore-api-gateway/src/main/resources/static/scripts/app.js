@@ -2,7 +2,7 @@
 /* App Module */
 var onlinestoreApp = angular.module('onlinestoreApp', [
     'ui.router', 'layoutNav', 'layoutFooter', 'layoutWelcome',
-    'ownerList', 'ownerDetails', 'ownerForm', 'petForm', 'visits', 'vetList']);
+    'ownerList', 'ownerDetails']);
 
 onlinestoreApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function(
     $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
