@@ -1,0 +1,26 @@
+<h2>Product Information</h2>
+
+<!-- TODO: Add image -->
+<table class="table table-striped">
+    <tr>
+        <th class="col-sm-3">Name</th>
+        <td><b>{{$ctrl.product.name}}</b></td>
+    </tr>
+    <tr>
+        <th>Type</th>
+        <td>{{$ctrl.product.type}}</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>{{$ctrl.product.price}}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{$ctrl.product.description}}</td>
+    </tr>
+    <tr>
+        <td>
+            <a class="btn btn-default" ui-sref="productEdit({productId: $ctrl.product.id})">Edit Product</a>
+        </td>
+    </tr>
+</table>

@@ -10,7 +10,7 @@ import org.springframework.cloud.circuitbreaker.resilience4j.ReactiveResilience4
 import org.springframework.context.annotation.Import;
 import org.springframework.samples.onlinestore.api.application.CustomersServiceClient;
 import org.springframework.samples.onlinestore.api.application.VisitsServiceClient;
-import org.springframework.samples.onlinestore.api.dto.OwnerDetails;
+import org.springframework.samples.onlinestore.api.dto.ProductDetails;
 import org.springframework.samples.onlinestore.api.dto.PetDetails;
 import org.springframework.samples.onlinestore.api.dto.VisitDetails;
 import org.springframework.samples.onlinestore.api.dto.Visits;
@@ -37,15 +37,15 @@ class ApiGatewayControllerTest {
 
 
     @Test
-    void getOwnerDetails_withAvailableVisitsService() {
-        OwnerDetails owner = new OwnerDetails();
+    void getProductDetails_withAvailableVisitsService() {
+        ProductDetails product = new ProductDetails();
         PetDetails cat = new PetDetails();
         cat.setId(20);
         cat.setName("Garfield");
-        owner.getPets().add(cat);
+        product.getPets().add(cat);
         Mockito
-            .when(customersServiceClient.getOwner(1))
-            .thenReturn(Mono.just(owner));
+            .when(customersServiceClient.getProduct(1))
+            .thenReturn(Mono.just(product));
 
         Visits visits = new Visits();
         VisitDetails visit = new VisitDetails();
@@ -58,7 +58,7 @@ class ApiGatewayControllerTest {
             .thenReturn(Mono.just(visits));
 
         client.get()
-            .uri("/api/gateway/owners/1")
+            .uri("/api/gateway/products/1")
             .exchange()
             .expectStatus().isOk()
             //.expectBody(String.class)
@@ -73,22 +73,22 @@ class ApiGatewayControllerTest {
      * Test Resilience4j fallback method
      */
     @Test
-    void getOwnerDetails_withServiceError() {
-        OwnerDetails owner = new OwnerDetails();
+    void getProductDetails_withServiceError() {
+        ProductDetails product = new ProductDetails();
         PetDetails cat = new PetDetails();
         cat.setId(20);
         cat.setName("Garfield");
-        owner.getPets().add(cat);
+        product.getPets().add(cat);
         Mockito
-            .when(customersServiceClient.getOwner(1))
-            .thenReturn(Mono.just(owner));
+            .when(customersServiceClient.getProduct(1))
+            .thenReturn(Mono.just(product));
 
         Mockito
             .when(visitsServiceClient.getVisitsForPets(Collections.singletonList(cat.getId())))
             .thenReturn(Mono.error(new ConnectException("Simulate error")));
 
         client.get()
-            .uri("/api/gateway/owners/1")
+            .uri("/api/gateway/products/1")
             .exchange()
             .expectStatus().isOk()
             .expectBody()

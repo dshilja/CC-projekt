@@ -283,7 +283,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(onlinestore_owner_seconds_count{method=\"PUT\", status=\"204\"})",
+          "expr": "sum(onlinestore_product_seconds_count{method=\"PUT\", status=\"204\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 1,
@@ -291,7 +291,7 @@
         }
       ],
       "thresholds": "",
-      "title": "Owners Updated",
+      "title": "Products Updated",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -364,7 +364,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(onlinestore_owner_seconds_count{method=\"POST\", status=\"201\"})",
+          "expr": "sum(onlinestore_product_seconds_count{method=\"POST\", status=\"201\"})",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 1,
@@ -373,7 +373,7 @@
         }
       ],
       "thresholds": "",
-      "title": "Owners Created",
+      "title": "Products Created",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -590,11 +590,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(onlinestore_owner_seconds_count{method=\"POST\", status=\"201\"})",
+          "expr": "sum(onlinestore_product_seconds_count{method=\"POST\", status=\"201\"})",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
-          "legendFormat": "owner create",
+          "legendFormat": "product create",
           "refId": "A"
         },
         {
@@ -612,10 +612,10 @@
           "refId": "C"
         },
         {
-          "expr": "sum(onlinestore_owner_seconds_count{method=\"PUT\", status=\"204\"})",
+          "expr": "sum(onlinestore_product_seconds_count{method=\"PUT\", status=\"204\"})",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "owner update",
+          "legendFormat": "product update",
           "refId": "D"
         }
       ],

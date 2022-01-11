@@ -1,5 +1,5 @@
 # Provisions an Azure Spring Cloud environment on a virtual network.
-# Note: This pipeline must be run with a Service Connection that has the Owner role on the target resource group.
+# Note: This pipeline must be run with a Service Connection that has the Product role on the target resource group.
 
 name: Provision Resources
 

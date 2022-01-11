@@ -112,10 +112,10 @@ The id for this dashboard is `4701`.
 ### Custom metrics
 Spring Boot registers a lot number of core metrics: JVM, CPU, Tomcat, Logback... 
 The Spring Boot auto-configuration enables the instrumentation of requests handled by Spring MVC.
-All those three REST controllers `OwnerResource`, `PetResource` and `VisitResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
+All those three REST controllers `ProductResource`, `PetResource` and `VisitResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
 
 * `customers-service` application has the following custom metrics enabled:
-  * @Timed: `onlinestore.owner`
+  * @Timed: `onlinestore.product`
   * @Timed: `onlinestore.pet`
 * `visits-service` application has the following custom metrics enabled:
   * @Timed: `onlinestore.visit`

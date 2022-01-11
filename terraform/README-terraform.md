@@ -154,7 +154,7 @@ We already have MySQL database created. We can create the table and root user us
     
     Oracle is a registered trademark of Oracle Corporation and/or its
     affiliates. Other names may be trademarks of their respective
-    owners.
+    products.
     
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
