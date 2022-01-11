@@ -42,6 +42,7 @@ public class ApiGatewayController {
 
     private final CustomersServiceClient customersServiceClient;
 
+
     private final WebClient.Builder webClientBuilder;
 
     @GetMapping(value = "products/{productId}")
