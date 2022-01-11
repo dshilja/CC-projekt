@@ -54,7 +54,7 @@ public class Product {
 
     @Column(name = "product_type")
     @NotEmpty
-    private String product_Tpe;
+    private String product_Type;
 
     @Column(name = "product_price")
     @NotEmpty
