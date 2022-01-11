@@ -46,7 +46,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer productId;
 
     @Column(name = "product_name")
     @NotEmpty
@@ -71,7 +71,7 @@ public class Product {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "product")
     public Integer getId() {
-        return id;
+        return productId;
     }
 
     public String getProductName() {

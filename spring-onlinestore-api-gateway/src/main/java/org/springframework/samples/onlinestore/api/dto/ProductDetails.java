@@ -27,7 +27,7 @@ import static java.util.stream.Collectors.toList;
 @Data
 public class ProductDetails {
 
-    private int id;
+    private int productId;
 
     private String productName;
 
