@@ -56,7 +56,7 @@ Install the Azure Spring Cloud extension for the Azure CLI using the following c
 
 ```bash
     mkdir source-code
-    git clone https://github.com/azure-samples/spring-onlinestore-microservices
+    git clone https://github.com/dshilja/CC-projekt
 ```
 
 ### Change directory and build the project
