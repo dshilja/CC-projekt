@@ -89,7 +89,7 @@ resource "azurerm_subnet" "service_subnet" {
 # Make sure the SPID used to provision terraform has privilage to do role assignments. 
 resource "azurerm_role_assignment" "ra" {
   scope                = azurerm_virtual_network.test.id
-  role_definition_name = "Owner"
+  role_definition_name = "Product"
   principal_id         = "d2531223-68f9-459e-b225-5592f90d145e"
 }
 

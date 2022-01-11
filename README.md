@@ -326,8 +326,13 @@ Create a MySQL database in Azure Database for MySQL.
 
     Oracle is a registered trademark of Oracle Corporation and/or its
     affiliates. Other names may be trademarks of their respective
+<<<<<<< HEAD
     owners.
 
+=======
+    products.
+    
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
     mysql> CREATE DATABASE onlinestore;
@@ -384,19 +389,39 @@ Navigate to the URL provided by the previous command to open the Online Shop app
 
 #### Use the onlinestore application and make a few REST API calls
 
+<<<<<<< HEAD
 Open the onlinestore application and try out a few tasks:
+=======
+Open the onlinestore application and try out a few tasks - view pet products and their pets, 
+vets, and schedule pet visits:
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
 
 ```bash
 open https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/
 ```
 
+<<<<<<< HEAD
 You can also `curl` the REST API exposed by the onlinestore application.
+=======
+You can also `curl` the REST API exposed by the onlinestore application. The admin REST
+API allows you to create/update/remove items in Pet Products, Pets, Vets and Visits.
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
 You can run the following curl commands:
 
 ```bash
 curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products
 curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products/4
+<<<<<<< HEAD
 curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products/
+=======
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products/ 
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/petTypes
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products/3/pets/4
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/customer/products/6/pets/8/
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/vet/vets
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/visit/products/6/pets/8/visits
+curl -X GET https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/api/visit/products/6/pets/8/visits
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
 ```
 
 #### Get the log stream for API Gateway and Customers Service
@@ -467,10 +492,20 @@ The chart below shows `gateway-requests` (Spring Cloud Gateway), `hikaricp_conne
 
 Spring Boot registers a lot number of core metrics: JVM, CPU, Tomcat, Logback...
 The Spring Boot auto-configuration enables the instrumentation of requests handled by Spring MVC.
+<<<<<<< HEAD
 All those three REST controllers `ProductResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
 
 - `customers-service` application has the following custom metrics enabled:
   - @Timed: `onlinestore.product`
+=======
+All those three REST controllers `ProductResource`, `PetResource` and `VisitResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
+
+* `customers-service` application has the following custom metrics enabled:
+  * @Timed: `onlinestore.product`
+  * @Timed: `onlinestore.pet`
+* `visits-service` application has the following custom metrics enabled:
+  * @Timed: `onlinestore.visit`
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
 
 You can see these custom metrics in the `Metrics` blade:
 ![](./media/onlinestore-microservices-custom-metrics.jpg)

@@ -9,7 +9,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.cloud.circuitbreaker.resilience4j.ReactiveResilience4JAutoConfiguration;
 import org.springframework.context.annotation.Import;
 import org.springframework.samples.onlinestore.api.application.CustomersServiceClient;
+<<<<<<< HEAD
 import org.springframework.samples.onlinestore.api.dto.ProductDetails;
+=======
+import org.springframework.samples.onlinestore.api.application.VisitsServiceClient;
+import org.springframework.samples.onlinestore.api.dto.ProductDetails;
+import org.springframework.samples.onlinestore.api.dto.PetDetails;
+import org.springframework.samples.onlinestore.api.dto.VisitDetails;
+import org.springframework.samples.onlinestore.api.dto.Visits;
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;

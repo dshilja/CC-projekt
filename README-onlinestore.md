@@ -114,10 +114,20 @@ A JMeter load testing script is available to stress the application and generate
 
 Spring Boot registers a lot number of core metrics: JVM, CPU, Tomcat, Logback...
 The Spring Boot auto-configuration enables the instrumentation of requests handled by Spring MVC.
+<<<<<<< HEAD
 All those three REST controllers `ProductResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
 
 - `customers-service` application has the following custom metrics enabled:
   - @Timed: `onlinestore.product`
+=======
+All those three REST controllers `ProductResource`, `PetResource` and `VisitResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
+
+* `customers-service` application has the following custom metrics enabled:
+  * @Timed: `onlinestore.product`
+  * @Timed: `onlinestore.pet`
+* `visits-service` application has the following custom metrics enabled:
+  * @Timed: `onlinestore.visit`
+>>>>>>> 47e081b3da849c871bbba02c16e2cb54028812fc
 
 ## Looking for something in particular?
 
