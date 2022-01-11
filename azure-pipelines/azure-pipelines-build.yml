@@ -9,35 +9,34 @@ name: Build on Azure Pipelines
 trigger:
   branches:
     include:
-    - master
+      - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 steps:
+  - task: Maven@3
+    inputs:
+      options: -Denv=cloud
+      publishJUnitResults: true
+      testResultsFiles: "**/surefire-reports/TEST-*.xml"
+      javaHomeOption: "JDKVersion"
+      mavenVersionOption: "Default"
+      mavenAuthenticateFeed: false
+      effectivePomSkip: false
+      sonarQubeRunAnalysis: false
 
-- task: Maven@3
-  inputs:
-    options: -Denv=cloud
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+  - task: CopyFiles@2
+    name: copyjars
+    displayName: Copy built artifacts to staging directory
+    inputs:
+      sourceFolder: "$(Build.SourcesDirectory)"
+      contents: "**/target/*.jar"
+      flattenFolders: true
+      targetFolder: "$(Build.ArtifactStagingDirectory)"
 
-- task: CopyFiles@2
-  name: copyjars
-  displayName: Copy built artifacts to staging directory
-  inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: '**/target/*.jar'
-    flattenFolders: true
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'build'
-    publishLocation: 'Container'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      ArtifactName: "build"
+      publishLocation: "Container"
