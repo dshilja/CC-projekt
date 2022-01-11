@@ -23,11 +23,9 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-/**
- * @author Maciej Szarlinski
- */
+
 @Data
-public class OwnerDetails {
+public class ProductDetails {
 
     private int id;
 
