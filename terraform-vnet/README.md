@@ -6,7 +6,7 @@ This repository hosts instructional and sample content for using Azure Spring Cl
 
 [settings-example.xml](settings-example.xml) - An illustration of the `settings.xml` file enabling the Maven build to use Azure Artifacts.
 
-[main.tf](main.tf) - Terraform script with all the necessary resources to deploy Petclinic app along with Azure spring cloud service instance. The script also provions a VNET and two subnets and adds a CIDR block to Azure spring cloud instance. 
+[main.tf](main.tf) - Terraform script with all the necessary resources to deploy onlinestore app along with Azure spring cloud service instance. The script also provions a VNET and two subnets and adds a CIDR block to Azure spring cloud instance. 
 
 [provision-resources-vnet-terraform.yml](provision-resources.yml) - An Azure pipeline to provision (via Terraform scirpt  above) and configure all required resources for the application. The pipeline builds a private copy of Terraform from the following [repository](https://github.com/njuCZ/terraform-provider-azurerm/tree/spring_cloud_service_vnet_integration). It initialized remote backend to the variables provided for the terraform task and then applies the script. At the successful conclusion of this pipeline, the application is ready to build and deploy.
 

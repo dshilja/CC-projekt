@@ -5,7 +5,7 @@ languages:
 products:
 - Azure Spring Cloud
 description: "Deploy Spring Boot apps using Azure Spring Cloud and MySQL"
-urlFragment: "spring-petclinic-microservices"
+urlFragment: "spring-onlinestore-microservices"
 ---
 
 # Deploy Spring Boot apps using Azure Spring Cloud and MySQL 
@@ -106,13 +106,13 @@ have the CLI extension, you may need to upgrade to the latest using --
 
 ```bash
     mkdir source-code
-    git clone https://github.com/azure-samples/spring-petclinic-microservices
+    git clone https://github.com/azure-samples/spring-onlinestore-microservices
 ```
 
 ### Change directory and build the project
 
 ```bash
-    cd spring-petclinic-microservices
+    cd spring-onlinestore-microservices
     mvn clean package -DskipTests -Denv=cloud
 ```
 This will take a few minutes.
@@ -337,13 +337,13 @@ Create a MySQL database in Azure Database for MySQL.
     
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
-    mysql> CREATE DATABASE petclinic;
+    mysql> CREATE DATABASE onlinestore;
     Query OK, 1 row affected (0.10 sec)
     
-    mysql> CREATE USER 'root' IDENTIFIED BY 'petclinic';
+    mysql> CREATE USER 'root' IDENTIFIED BY 'onlinestore';
     Query OK, 0 rows affected (0.11 sec)
     
-    mysql> GRANT ALL PRIVILEGES ON petclinic.* TO 'root';
+    mysql> GRANT ALL PRIVILEGES ON onlinestore.* TO 'root';
     Query OK, 0 rows affected (1.29 sec)
     
     mysql> CALL mysql.az_load_timezone();
@@ -409,20 +409,20 @@ Deploy Spring Boot applications to Azure.
 
 Navigate to the URL provided by the previous command to open the Pet Clinic application.
     
-![](./media/petclinic.jpg)
+![](./media/onlinestore.jpg)
 
 ### Monitor Spring Boot applications
 
-#### Use the Petclinic application and make a few REST API calls
+#### Use the onlinestore application and make a few REST API calls
 
-Open the Petclinic application and try out a few tasks - view pet owners and their pets, 
+Open the onlinestore application and try out a few tasks - view pet owners and their pets, 
 vets, and schedule pet visits:
 
 ```bash
 open https://${SPRING_CLOUD_SERVICE}-${API_GATEWAY}.azuremicroservices.io/
 ```
 
-You can also `curl` the REST API exposed by the Petclinic application. The admin REST
+You can also `curl` the REST API exposed by the onlinestore application. The admin REST
 API allows you to create/update/remove items in Pet Owners, Pets, Vets and Visits.
 You can run the following curl commands:
 
@@ -478,17 +478,17 @@ Navigate to the `Application Map` blade:
 ![](./media/distributed-tracking-new-ai-agent.jpg)
 
 Navigate to the `Performance` blade:
-![](./media/petclinic-microservices-performance.jpg)
+![](./media/onlinestore-microservices-performance.jpg)
 
 Navigate to the `Performance/Dependenices` blade - you can see the performance number for dependencies, 
 particularly SQL calls:
-![](./media/petclinic-microservices-insights-on-dependencies.jpg)
+![](./media/onlinestore-microservices-insights-on-dependencies.jpg)
 
 Click on a SQL call to see the end-to-end transaction in context:
-![](./media/petclinic-microservices-end-to-end-transaction-details.jpg)
+![](./media/onlinestore-microservices-end-to-end-transaction-details.jpg)
 
 Navigate to the `Failures/Exceptions` blade - you can see a collection of exceptions:
-![](./media/petclinic-microservices-failures-exceptions.jpg)
+![](./media/onlinestore-microservices-failures-exceptions.jpg)
 
 Click on an exception to see the end-to-end transaction and stacktrace in context:
 ![](./media/end-to-end-transaction-details.jpg)
@@ -498,29 +498,29 @@ Spring Cloud modules, and dependencies.
 The chart below shows `gateway-requests` (Spring Cloud Gateway), `hikaricp_connections`
  (JDBC Connections) and `http_client_requests`.
  
-![](./media/petclinic-microservices-metrics.jpg)
+![](./media/onlinestore-microservices-metrics.jpg)
 
 Spring Boot registers a lot number of core metrics: JVM, CPU, Tomcat, Logback... 
 The Spring Boot auto-configuration enables the instrumentation of requests handled by Spring MVC.
 All those three REST controllers `OwnerResource`, `PetResource` and `VisitResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
 
 * `customers-service` application has the following custom metrics enabled:
-  * @Timed: `petclinic.owner`
-  * @Timed: `petclinic.pet`
+  * @Timed: `onlinestore.owner`
+  * @Timed: `onlinestore.pet`
 * `visits-service` application has the following custom metrics enabled:
-  * @Timed: `petclinic.visit`
+  * @Timed: `onlinestore.visit`
 
 You can see these custom metrics in the `Metrics` blade:
-![](./media/petclinic-microservices-custom-metrics.jpg)
+![](./media/onlinestore-microservices-custom-metrics.jpg)
 
 You can use the Availability Test feature in Application Insights and monitor 
 the availability of applications:
-![](./media/petclinic-microservices-availability.jpg)
+![](./media/onlinestore-microservices-availability.jpg)
 
 Navigate to the `Live Metrics` blade - you can see live metrics on screen with low latencies < 1 second:
-![](./media/petclinic-microservices-live-metrics.jpg)
+![](./media/onlinestore-microservices-live-metrics.jpg)
 
-#### Start monitoring Petclinic logs and metrics in Azure Log Analytics
+#### Start monitoring onlinestore logs and metrics in Azure Log Analytics
 
 Open the Log Analytics that you created - you can find the Log Analytics in the same 
 Resource Group where you created an Azure Spring Cloud service instance.
@@ -708,17 +708,17 @@ Activate applications to load secrets from Azure Key Vault.
 ```bash
     # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI
     az spring-cloud app update --name ${CUSTOMERS_SERVICE} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://petclinic-keyvault.vault.azure.net/' \
+        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
         --env
     
     # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI    
     az spring-cloud app update --name ${VETS_SERVICE} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://petclinic-keyvault.vault.azure.net/' \
+        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
         --env
     
     # DO NOT FORGET to replace the value for "azure.keyvault.uri" JVM startup parameter with your Key Vault URI       
     az spring-cloud app update --name ${VISITS_SERVICE} \
-        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://petclinic-keyvault.vault.azure.net/' \
+        --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql,key-vault -Dazure.keyvault.uri=https://onlinestore-keyvault.vault.azure.net/' \
         --env
 ```
 
@@ -737,7 +737,7 @@ In this quickstart, you've deployed an existing Spring Boot-based app using Azur
 ## Credits
 
 This Spring microservices sample is forked from 
-[spring-petclinic/spring-petclinic-microservices](https://github.com/spring-petclinic/spring-petclinic-microservices) - see [Petclinic README](./README-petclinic.md). 
+[spring-onlinestore/spring-onlinestore-microservices](https://github.com/spring-onlinestore/spring-onlinestore-microservices) - see [onlinestore README](./README-onlinestore.md). 
 
 ## Contributing
 

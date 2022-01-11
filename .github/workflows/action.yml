@@ -12,11 +12,11 @@ env:
   VETS_SERVICE: vets-service
   VISITS_SERVICE: visits-service
   # ==== JARS ====:
-  API_GATEWAY_JAR: spring-petclinic-api-gateway/target/spring-petclinic-api-gateway-2.5.1.jar
-  ADMIN_SERVER_JAR: spring-petclinic-admin-server/target/spring-petclinic-admin-server-2.5.1.jar
-  CUSTOMERS_SERVICE_JAR: spring-petclinic-customers-service/target/spring-petclinic-customers-service-2.5.1.jar
-  VETS_SERVICE_JAR: spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.5.1.jar
-  VISITS_SERVICE_JAR: spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.5.1.jar
+  API_GATEWAY_JAR: spring-onlinestore-api-gateway/target/spring-onlinestore-api-gateway-2.5.1.jar
+  ADMIN_SERVER_JAR: spring-onlinestore-admin-server/target/spring-onlinestore-admin-server-2.5.1.jar
+  CUSTOMERS_SERVICE_JAR: spring-onlinestore-customers-service/target/spring-onlinestore-customers-service-2.5.1.jar
+  VETS_SERVICE_JAR: spring-onlinestore-vets-service/target/spring-onlinestore-vets-service-2.5.1.jar
+  VISITS_SERVICE_JAR: spring-onlinestore-visits-service/target/spring-onlinestore-visits-service-2.5.1.jar
 
 jobs:
   build:

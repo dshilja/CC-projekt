@@ -6,7 +6,7 @@ export ADMIN_SERVER=admin-server
 export CUSTOMERS_SERVICE=customers-service
 export VETS_SERVICE=vets-service
 export VISITS_SERVICE=visits-service
-MYSQL_DATABASE_NAME=petclinic
+MYSQL_DATABASE_NAME=onlinestore
 
 az extension add -n spring-cloud -y
 SPRING_CLOUD_NAME=$(az spring-cloud list -g "${RESOURCE_GROUP}" -o tsv --query "[].name")

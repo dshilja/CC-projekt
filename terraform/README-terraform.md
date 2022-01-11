@@ -5,7 +5,7 @@ languages:
 products:
 - Azure Spring Cloud
 description: "Deploy Spring microservices using Azure Spring Cloud and MySQL"
-urlFragment: "spring-petclinic-microservices"
+urlFragment: "spring-onlinestore-microservices"
 ---
 # Deploy Spring Microservices using Azure Spring Cloud and MySQL 
 
@@ -53,13 +53,13 @@ Install the Azure Spring Cloud extension for the Azure CLI using the following c
 
 ```bash
     mkdir source-code
-    git clone https://github.com/azure-samples/spring-petclinic-microservices
+    git clone https://github.com/azure-samples/spring-onlinestore-microservices
 ```
 
 ### Change directory and build the project
 
 ```bash
-    cd spring-petclinic-microservices
+    cd spring-onlinestore-microservices
     mvn clean package -DskipTests -Denv=cloud
 ```
 This will take a few minutes.
@@ -158,10 +158,10 @@ We already have MySQL database created. We can create the table and root user us
     
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
-    mysql> CREATE USER 'root' IDENTIFIED BY 'petclinic';
+    mysql> CREATE USER 'root' IDENTIFIED BY 'onlinestore';
     Query OK, 0 rows affected (0.11 sec)
     
-    mysql> GRANT ALL PRIVILEGES ON petclinic.* TO 'root';
+    mysql> GRANT ALL PRIVILEGES ON onlinestore.* TO 'root';
     Query OK, 0 rows affected (1.29 sec)
     
     
@@ -216,7 +216,7 @@ Deploy microservice applications to Azure.
 
 Navigate to the URL provided by the previous command to open the Pet Clinic microservice application.
     
-![](../media/petclinic.jpg)
+![](../media/onlinestore.jpg)
 
 ## Next Steps
 
@@ -233,7 +233,7 @@ In this quickstart, you've deployed an existing Spring microservices app using A
 ## Credits
 
 This Spring microservices sample is forked from 
-[spring-petclinic/spring-petclinic-microservices](https://github.com/spring-petclinic/spring-petclinic-microservices) - see [Petclinic README](../README-petclinic.md). 
+[spring-onlinestore/spring-onlinestore-microservices](https://github.com/spring-onlinestore/spring-onlinestore-microservices) - see [onlinestore README](../README-onlinestore.md). 
 
 ## Contributing
 
