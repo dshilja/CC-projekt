@@ -42,7 +42,7 @@ class ApiGatewayControllerTest {
             .uri("/api/gateway/products/1")
             .exchange()
             .expectStatus().isOk()
-            .expectBody()
+            .expectBody();
     }
 
 }

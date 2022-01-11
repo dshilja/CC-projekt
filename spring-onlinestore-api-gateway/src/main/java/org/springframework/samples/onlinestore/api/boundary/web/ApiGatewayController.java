@@ -29,9 +29,6 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
-
 /**
  * @author Maciej Szarlinski
  */
@@ -42,34 +39,8 @@ public class ApiGatewayController {
 
     private final CustomersServiceClient customersServiceClient;
 
-
-    private final WebClient.Builder webClientBuilder;
-
     @GetMapping(value = "products/{productId}")
     public Mono<ProductDetails> getProductDetails(final @PathVariable int productId) {
-        //return customersServiceClient.getProduct(productId);
-        return webClientBuilder.build().get()
-            .uri("http://customers-service/products/{productId}", productId) 
-            .retrieve()
-            .bodyToMono(ProductDetails.class);
+        return customersServiceClient.getProduct(productId);
     }
 }
-/*
-        return customersServiceClient.getProduct(productId)
-            .flatMap(product ->
-                visitsServiceClient.getVisitsForPets(product.getPetIds())
-                    .transform(it -> {
-                        ReactiveCircuitBreaker cb = cbFactory.create("getProductDetails");
-                        return cb.run(it, throwable -> emptyVisitsForPets());
-                    })
-            );*/
-
-            /*
-    public Mono<ProductDetails> getProduct(final int productId) {
-        return webClientBuilder.build().get()
-            .uri("http://customers-service/products/{productId}", productId) 
-            .retrieve()
-            .bodyToMono(ProductDetails.class);
-    }
-    */
-
