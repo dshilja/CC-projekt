@@ -4,23 +4,23 @@
 <table class="table table-striped">
     <tr>
         <th class="col-sm-3">Name</th>
-        <td><b>{{$ctrl.product.name}}</b></td>
+        <td><b>{{$ctrl.product.product_name}}</b></td>
     </tr>
     <tr>
         <th>Type</th>
-        <td>{{$ctrl.product.type}}</td>
+        <td>{{$ctrl.product.product_type}}</td>
     </tr>
     <tr>
         <th>Price</th>
-        <td>{{$ctrl.product.price}}</td>
+        <td>{{$ctrl.product.product_price}}</td>
     </tr>
     <tr>
         <th>Description</th>
-        <td>{{$ctrl.product.description}}</td>
+        <td>{{$ctrl.product.product_description}}</td>
     </tr>
     <tr>
         <td>
-            <a class="btn btn-default" ui-sref="productEdit({productId: $ctrl.product.id})">Edit Product</a>
+            <a class="btn btn-default" ui-sref="productEdit({productId: $ctrl.product.product_id})">Edit Product</a>
         </td>
     </tr>
 </table>
