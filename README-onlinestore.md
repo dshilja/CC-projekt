@@ -157,5 +157,5 @@ The [issue tracker](https://github.com/spring-onlinestore/spring-onlinestore-mic
 For pull requests, editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
 
-[Configuration repository]: https://github.com/spring-onlinestore/spring-onlinestore-microservices-config
+[Configuration repository]: https://github.com/dshilja/CC-projekt/tree/main/config
 [Spring Boot Actuator Production Ready Metrics]: https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-metrics.html
