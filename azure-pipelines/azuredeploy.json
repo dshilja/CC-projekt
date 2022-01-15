@@ -95,7 +95,7 @@
                     "configServer": {
                         "gitProperty": {
                             "repositories": [],
-                            "uri": "https://github.com/selvasingh/spring-petclinic-microservices-config",
+                            "uri": "https://github.com/lara173/spring-microservices-config",
                             "searchPaths": [
                             ]
                         }

@@ -55,7 +55,7 @@ resource "azurerm_spring_cloud_service" "example" {
   location            = azurerm_resource_group.example.location
 
   config_server_git_setting {
-    uri          = "https://github.com/Azure-Samples/spring-petclinic-microservices-config"
+    uri          = "https://github.com/lara173/spring-microservices-config"
     label        = "master"
     search_paths= ["."]
 
