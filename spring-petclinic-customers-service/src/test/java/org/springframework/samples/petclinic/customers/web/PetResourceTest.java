@@ -57,7 +57,7 @@ class PetResourceTest {
 
     private Pet setupPet() {
         Product product = new Product();
-        product.setFirstName("George");
+        product.setProductName("George");
         product.setLastName("Bush");
 
         Pet pet = new Pet();

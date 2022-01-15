@@ -20,7 +20,7 @@ angular.module('petForm')
             } else {
                 $http.get('api/customer/products/' + productId).then(function (resp) {
                     self.pet = {
-                        product: resp.data.firstName + " " + resp.data.lastName
+                        product: resp.data.productName + " " + resp.data.lastName
                     };
                     self.petTypeId = "1";
                 })

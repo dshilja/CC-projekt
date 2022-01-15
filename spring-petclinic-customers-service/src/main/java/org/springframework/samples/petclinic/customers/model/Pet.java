@@ -109,7 +109,7 @@ public class Pet {
                 .append("name", this.getName())
                 .append("birthDate", this.getBirthDate())
                 .append("type", this.getType().getName())
-                .append("productFirstname", this.getProduct().getFirstName())
+                .append("productProductname", this.getProduct().getProductName())
                 .append("productLastname", this.getProduct().getLastName())
                 .toString();
     }

@@ -80,7 +80,7 @@ class ProductResource {
                 .orElseThrow(() -> new ResourceNotFoundException("Product " + productId + " not found"));
         // This is done by hand for simplicity purpose. In a real life use-case we
         // should consider using MapStruct.
-        productModel.setFirstName(productRequest.getFirstName());
+        productModel.setProductName(productRequest.getProductName());
         productModel.setLastName(productRequest.getLastName());
         productModel.setCity(productRequest.getCity());
         productModel.setAddress(productRequest.getAddress());

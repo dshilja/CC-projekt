@@ -31,7 +31,7 @@ public class ProductDetails {
 
     private int id;
 
-    private String firstName;
+    private String productName;
 
     private String lastName;
 

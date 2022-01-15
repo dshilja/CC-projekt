@@ -54,9 +54,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "first_name")
+    @Column(name = "product_name")
     @NotEmpty
-    private String firstName;
+    private String productName;
 
     @Column(name = "last_name")
     @NotEmpty
@@ -82,12 +82,12 @@ public class Product {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setFirstName(final String firstName) {
-        this.firstName = firstName;
+    public void setProductName(final String productName) {
+        this.productName = productName;
     }
 
     public String getLastName() {
@@ -146,7 +146,7 @@ public class Product {
 
                 .append("id", this.getId())
                 .append("lastName", this.getLastName())
-                .append("firstName", this.getFirstName())
+                .append("productName", this.getProductName())
                 .append("address", this.address)
                 .append("city", this.city)
                 .append("telephone", this.telephone)
