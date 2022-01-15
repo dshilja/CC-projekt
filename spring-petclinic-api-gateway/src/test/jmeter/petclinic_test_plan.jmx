@@ -122,7 +122,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{  &#xd;
-   &quot;firstName&quot;:&quot;Firstname&quot;,&#xd;
+   &quot;productName&quot;:&quot;Productname&quot;,&#xd;
    &quot;lastName&quot;:&quot;Lastname&quot;,&#xd;
    &quot;address&quot;:&quot;Adress&quot;,&#xd;
    &quot;city&quot;:&quot;City&quot;,&#xd;
@@ -202,7 +202,7 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{  &#xd;
    &quot;id&quot;:&quot;${PRODUCT_ID}&quot;,&#xd;
-   &quot;firstName&quot;:&quot;Firstname&quot;,&#xd;
+   &quot;productName&quot;:&quot;Productname&quot;,&#xd;
    &quot;lastName&quot;:&quot;Lastname${PRODUCT_ID}&quot;,&#xd;
    &quot;address&quot;:&quot;Adress${PRODUCT_ID}&quot;,&#xd;
    &quot;city&quot;:&quot;City${PRODUCT_ID}&quot;,&#xd;
