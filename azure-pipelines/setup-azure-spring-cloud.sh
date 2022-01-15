@@ -4,7 +4,6 @@
 export API_GATEWAY=api-gateway
 export ADMIN_SERVER=admin-server
 export CUSTOMERS_SERVICE=customers-service
-export VETS_SERVICE=vets-service
 export VISITS_SERVICE=visits-service
 MYSQL_DATABASE_NAME=petclinic
 
@@ -38,16 +37,6 @@ az spring-cloud app create --name ${CUSTOMERS_SERVICE} --instance-count 1 \
     -g "${RESOURCE_GROUP}"  -s "${SPRING_CLOUD_NAME}" \
     --memory 2 \
     --jvm-options='-Xms2048m -Xmx2048m  -Dspring.profiles.active=mysql' \
-    --env MYSQL_SERVER_FULL_NAME=${MYSQL_HOST} \
-        MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME} \
-        MYSQL_SERVER_ADMIN_LOGIN_NAME=${MYSQL_USERNAME} \
-        MYSQL_SERVER_ADMIN_PASSWORD="${MYSQL_PASSWORD}"
-
-
-az spring-cloud app create --name ${VETS_SERVICE} --instance-count 1 \
-    -g "${RESOURCE_GROUP}"  -s "${SPRING_CLOUD_NAME}" \
-    --memory 2 \
-    --jvm-options='-Xms2048m -Xmx2048m -Dspring.profiles.active=mysql' \
     --env MYSQL_SERVER_FULL_NAME=${MYSQL_HOST} \
         MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME} \
         MYSQL_SERVER_ADMIN_LOGIN_NAME=${MYSQL_USERNAME} \

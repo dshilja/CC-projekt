@@ -2,7 +2,7 @@
 /* App Module */
 var petClinicApp = angular.module('petClinicApp', [
     'ui.router', 'layoutNav', 'layoutFooter', 'layoutWelcome',
-    'productList', 'productDetails', 'productForm', 'petForm', 'visits', 'vetList']);
+    'productList', 'productDetails', 'productForm', 'petForm', 'visits']);
 
 petClinicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function(
     $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
