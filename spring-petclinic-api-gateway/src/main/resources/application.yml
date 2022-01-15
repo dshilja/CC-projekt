@@ -5,6 +5,12 @@ spring:
         enabled: false
     gateway:
       routes:
+        - id: vets-service
+          uri: http://vets-service
+          predicates:
+            - Path=/api/vet/**
+          filters:
+            - StripPrefix=2
         - id: visits-service
           uri: http://visits-service
           predicates:
