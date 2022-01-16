@@ -112,7 +112,6 @@ resource "azurerm_spring_cloud_service" "example" {
     uri          = "https://github.com/lara173/spring-petclinic-microservices-config"
     label        = "master"
     search_paths = ["."]
-
   }
 
   network {

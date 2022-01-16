@@ -10,28 +10,27 @@
         </div>
         <div class="navbar-collapse collapse" id="main-navbar">
             <ul class="nav navbar-nav navbar-right">
-                <li ui-sref-active="active">
-                    <a ui-sref="welcome" title="home page">
-                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                        <span>Home</span>
+
+                <li ui-sref-active="active" class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">Warenkorb<span class="caret"></span>
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="products"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span>  </span></a></li>
+                        <li><a ui-sref="products"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span>  </span></a></li>
+                        <li><a ui-sref="productNew"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span>  </span></a></li>
+                    </ul>
                 </li>
 
                 <li ui-sref-active="active" class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false">Products<span class="caret"></span>
+                       aria-haspopup="true" aria-expanded="false">Benutzer<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a ui-sref="products"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> All</span></a></li>
-                        <li><a ui-sref="productNew"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Register</span></a></li>
+                        <li><a ui-sref="products"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> Benutzerkonto </span></a></li>
+                        <li><a ui-sref="products"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> Bestellungen </span></a></li>
+                        <li><a ui-sref="productNew"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Abmelden </span></a></li>
                     </ul>
-                </li>
-
-                <li ui-sref-active="active">
-                    <a ui-sref="vets" title="veterinarians">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                        <span>Veterinarians</span>
-                    </a>
                 </li>
             </ul>
         </div>
