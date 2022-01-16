@@ -37,7 +37,7 @@ public class ProductDetails {
 
     private String address;
 
-    private String city;
+    private String category;
 
     private String telephone;
 }

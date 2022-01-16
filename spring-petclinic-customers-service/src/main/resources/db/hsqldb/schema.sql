@@ -7,7 +7,7 @@ CREATE TABLE products (
   product_name VARCHAR(30),
   price      VARCHAR(30),
   address    VARCHAR(255),
-  city       VARCHAR(80),
+  category       VARCHAR(30),
   telephone  VARCHAR(20)
 );
-CREATE INDEX products_price ON products (price);
+CREATE INDEX products_price ON products (product_name);

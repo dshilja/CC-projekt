@@ -66,9 +66,9 @@ public class Product {
     @NotEmpty
     private String address;
 
-    @Column(name = "city")
+    @Column(name = "category")
     @NotEmpty
-    private String city;
+    private String category;
 
     @Column(name = "telephone")
     @NotEmpty
@@ -103,12 +103,12 @@ public class Product {
         this.address = address;
     }
 
-    public String getCity() {
-        return this.city;
+    public String getCategory() {
+        return this.category;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getTelephone() {
@@ -127,7 +127,7 @@ public class Product {
                 .append("price", this.getPrice())
                 .append("productName", this.getProductName())
                 .append("address", this.address)
-                .append("city", this.city)
+                .append("category", this.category)
                 .append("telephone", this.telephone)
                 .toString();
     }
