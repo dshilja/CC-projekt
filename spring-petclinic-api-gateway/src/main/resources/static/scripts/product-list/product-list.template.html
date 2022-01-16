@@ -13,7 +13,6 @@
         <th class="hidden-sm hidden-xs">Address</th>
         <th>City</th>
         <th>Telephone</th>
-        <th class="hidden-xs">Pets</th>
     </tr>
     </thead>
 
@@ -26,6 +25,5 @@
         <td class="hidden-sm hidden-xs">{{product.address}}</td>
         <td>{{product.city}}</td>
         <td>{{product.telephone}}</td>
-        <td class="hidden-xs"><span ng-repeat="pet in product.pets track by pet.id">{{pet.name + ' '}}</span></td>
     </tr>
 </table>

@@ -17,32 +17,4 @@
         <th>Telephone</th>
         <td>{{$ctrl.product.telephone}}</td>
     </tr>
-    <tr>
-        <td>
-            <a class="btn btn-default" ui-sref="productEdit({productId: $ctrl.product.id})">Edit Product</a>
-        </td>
-        <td>
-            <a ui-sref="petNew({productId: $ctrl.product.id})" class="btn btn-default">Add New Pet</a>
-        </td>
-    </tr>
 </table>
-
-<h2>Pets</h2>
-
-<table class="table table-striped">
-    <tr ng-repeat="pet in $ctrl.product.pets track by pet.id">
-        <td valign="top">
-            <dl class="dl-horizontal">
-                <dt>Name</dt>
-                <dd><a ui-sref="petEdit({productId: $ctrl.product.id, petId: pet.id})">{{pet.name}}</a></dd>
-                <dt>Birth Date</dt>
-                <dd>{{pet.birthDate | date:'yyyy MMM dd'}}</dd>
-                <dt>Type</dt>
-                <dd>{{pet.type.name}}</dd>
-            </dl>
-        </td>
-    </tr>
-</table>
-
-
-

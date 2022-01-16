@@ -40,13 +40,4 @@ public class ProductDetails {
     private String city;
 
     private String telephone;
-
-    private final List<PetDetails> pets = new ArrayList<>();
-
-    @JsonIgnore
-    public List<Integer> getPetIds() {
-        return pets.stream()
-                .map(PetDetails::getId)
-                .collect(toList());
-    }
 }

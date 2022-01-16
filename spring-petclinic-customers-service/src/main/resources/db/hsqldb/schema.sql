@@ -1,4 +1,3 @@
-DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE products IF EXISTS;
 
@@ -17,14 +16,3 @@ CREATE TABLE products (
   telephone  VARCHAR(20)
 );
 CREATE INDEX products_last_name ON products (last_name);
-
-CREATE TABLE pets (
-  id         INTEGER IDENTITY PRIMARY KEY,
-  name       VARCHAR(30),
-  birth_date DATE,
-  type_id    INTEGER NOT NULL,
-  product_id   INTEGER NOT NULL
-);
-ALTER TABLE pets ADD CONSTRAINT fk_pets_products FOREIGN KEY (product_id) REFERENCES products (id);
-ALTER TABLE pets ADD CONSTRAINT fk_pets_types FOREIGN KEY (type_id) REFERENCES types (id);
-CREATE INDEX pets_name ON pets (name);

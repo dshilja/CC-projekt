@@ -444,27 +444,6 @@
         "show": false
       },
       "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(petclinic_pet_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "instant": true,
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "title": "Pets Created",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
       "valueName": "avg"
     },
     {
@@ -526,27 +505,6 @@
         "show": false
       },
       "tableColumn": "Value",
-      "targets": [
-        {
-          "expr": "sum(petclinic_visit_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "instant": true,
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "title": "Visit Created",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
       "valueName": "avg"
     },
     {
@@ -596,20 +554,6 @@
           "intervalFactor": 1,
           "legendFormat": "product create",
           "refId": "A"
-        },
-        {
-          "expr": "sum(petclinic_pet_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "pet create",
-          "refId": "B"
-        },
-        {
-          "expr": "sum(petclinic_visit_seconds_count{method=\"POST\", status=\"201\"})",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "visit create",
-          "refId": "C"
         },
         {
           "expr": "sum(petclinic_product_seconds_count{method=\"PUT\", status=\"204\"})",
