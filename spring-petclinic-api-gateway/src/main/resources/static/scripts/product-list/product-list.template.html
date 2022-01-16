@@ -10,20 +10,21 @@
     <thead>
     <tr>
         <th>Name</th>
-        <th class="hidden-sm hidden-xs">Address</th>
-        <th>Category</th>
-        <th>Telephone</th>
+        <th class="hidden-sm hidden-xs">Type</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
     </tr>
     </thead>
 
     <tr ng-repeat="product in $ctrl.products | filter:$ctrl.query track by product.id">
         <td>
             <a ui-sref="productDetails({ productId: product.id })">
-                {{product.productName}} {{product.price}}
+                {{product.name}} {{product.type}}
             </a>
         </td>
-        <td class="hidden-sm hidden-xs">{{product.address}}</td>
-        <td>{{product.category}}</td>
-        <td>{{product.telephone}}</td>
+        <td class="hidden-sm hidden-xs">{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.img_url}}</td>
     </tr>
 </table>

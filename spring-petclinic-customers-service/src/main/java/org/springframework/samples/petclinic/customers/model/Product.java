@@ -54,37 +54,45 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "product_name")
+    @Column(name = "name")
     @NotEmpty
-    private String productName;
+    private String name;
+
+    @Column(name = "type")
+    @NotEmpty
+    private String type;
 
     @Column(name = "price")
     @NotEmpty
     private String price;
 
-    @Column(name = "address")
+    @Column(name = "desription")
     @NotEmpty
-    private String address;
+    private String description;
 
-    @Column(name = "category")
-    @NotEmpty
-    private String category;
-
-    @Column(name = "telephone")
+    @Column(name = "img_url")
     @NotEmpty
     @Digits(fraction = 0, integer = 10)
-    private String telephone;
+    private String img_url;
 
     public Integer getId() {
         return id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(final String productName) {
-        this.productName = productName;
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getPrice() {
@@ -95,40 +103,31 @@ public class Product {
         this.price = price;
     }
 
-    public String getAddress() {
-        return this.address;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getCategory() {
-        return this.category;
+    public String getImageURL() {
+        return this.img_url;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getTelephone() {
-        return this.telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setImageURL(String img_url) {
+        this.img_url = img_url;
     }
 
     @Override
     public String toString() {
         return new ToStringCreator(this)
-
                 .append("id", this.getId())
+                .append("name", this.getName())
+                .append("type", this.getType())
                 .append("price", this.getPrice())
-                .append("productName", this.getProductName())
-                .append("address", this.address)
-                .append("category", this.category)
-                .append("telephone", this.telephone)
+                .append("description", this.getDescription())
+                .append("img_url", this.img_url)
                 .toString();
     }
 }

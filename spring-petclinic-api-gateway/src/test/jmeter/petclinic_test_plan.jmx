@@ -114,11 +114,11 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{  &#xd;
-   &quot;productName&quot;:&quot;Productname&quot;,&#xd;
+   &quot;name&quot;:&quot;Name&quot;,&#xd;
+   &quot;type&quot;:&quot;Type&quot;,&#xd;
    &quot;price&quot;:&quot;Price&quot;,&#xd;
-   &quot;address&quot;:&quot;Adress&quot;,&#xd;
-   &quot;category&quot;:&quot;Category&quot;,&#xd;
-   &quot;telephone&quot;:&quot;0000000000&quot;&#xd;
+   &quot;description&quot;:&quot;Description&quot;,&#xd;
+   &quot;img_url&quot;:&quot;0000000000&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -194,11 +194,11 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{  &#xd;
    &quot;id&quot;:&quot;${PRODUCT_ID}&quot;,&#xd;
-   &quot;productName&quot;:&quot;Productname&quot;,&#xd;
+   &quot;name&quot;:&quot;Name${PRODUCT_ID}&quot;,&#xd;
+   &quot;type&quot;:&quot;Type${PRODUCT_ID}&quot;,&#xd;
    &quot;price&quot;:&quot;Price${PRODUCT_ID}&quot;,&#xd;
-   &quot;address&quot;:&quot;Adress${PRODUCT_ID}&quot;,&#xd;
-   &quot;category&quot;:&quot;Category${PRODUCT_ID}&quot;,&#xd;
-   &quot;telephone&quot;:&quot;1111111111&quot;&#xd;
+   &quot;description&quot;:&quot;Description${PRODUCT_ID}&quot;,&#xd;
+   &quot;img_url&quot;:&quot;1111111111&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
