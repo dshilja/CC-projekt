@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS products (
   type VARCHAR(30),
   price VARCHAR(30),
   description VARCHAR(255),
-  img_url VARCHAR(80),
+  img_url VARCHAR(255),
   INDEX(name)
 ) engine=InnoDB;
