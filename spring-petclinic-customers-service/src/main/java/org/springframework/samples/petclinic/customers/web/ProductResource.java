@@ -81,7 +81,7 @@ class ProductResource {
         // This is done by hand for simplicity purpose. In a real life use-case we
         // should consider using MapStruct.
         productModel.setProductName(productRequest.getProductName());
-        productModel.setLastName(productRequest.getLastName());
+        productModel.setPrice(productRequest.getPrice());
         productModel.setCity(productRequest.getCity());
         productModel.setAddress(productRequest.getAddress());
         productModel.setTelephone(productRequest.getTelephone());

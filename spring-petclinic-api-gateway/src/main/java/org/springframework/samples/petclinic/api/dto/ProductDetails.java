@@ -33,7 +33,7 @@ public class ProductDetails {
 
     private String productName;
 
-    private String lastName;
+    private String price;
 
     private String address;
 

@@ -19,7 +19,7 @@
     <tr ng-repeat="product in $ctrl.products | filter:$ctrl.query track by product.id">
         <td>
             <a ui-sref="productDetails({ productId: product.id })">
-                {{product.productName}} {{product.lastName}}
+                {{product.productName}} {{product.price}}
             </a>
         </td>
         <td class="hidden-sm hidden-xs">{{product.address}}</td>
