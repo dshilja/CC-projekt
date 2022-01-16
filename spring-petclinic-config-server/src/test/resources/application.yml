@@ -3,4 +3,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/lara173/spring-microservices-config
+          uri: https://github.com/lara173/spring-petclinic-microservices-config
