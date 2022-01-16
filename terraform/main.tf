@@ -60,7 +60,7 @@ resource "azurerm_spring_cloud_service" "example" {
 
   config_server_git_setting {
     uri          = "https://github.com/lara173/spring-microservices-config"
-    label        = "master"
+    label        = "main"
     search_paths= ["."]
 
     }
