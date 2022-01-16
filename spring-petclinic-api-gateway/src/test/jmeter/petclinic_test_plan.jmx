@@ -117,7 +117,7 @@
    &quot;productName&quot;:&quot;Productname&quot;,&#xd;
    &quot;price&quot;:&quot;Price&quot;,&#xd;
    &quot;address&quot;:&quot;Adress&quot;,&#xd;
-   &quot;category&quot;:&quot;Category&quot;,&#xd;
+   &quot;city&quot;:&quot;City&quot;,&#xd;
    &quot;telephone&quot;:&quot;0000000000&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -197,7 +197,7 @@
    &quot;productName&quot;:&quot;Productname&quot;,&#xd;
    &quot;price&quot;:&quot;Price${PRODUCT_ID}&quot;,&#xd;
    &quot;address&quot;:&quot;Adress${PRODUCT_ID}&quot;,&#xd;
-   &quot;category&quot;:&quot;Category${PRODUCT_ID}&quot;,&#xd;
+   &quot;city&quot;:&quot;City${PRODUCT_ID}&quot;,&#xd;
    &quot;telephone&quot;:&quot;1111111111&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>

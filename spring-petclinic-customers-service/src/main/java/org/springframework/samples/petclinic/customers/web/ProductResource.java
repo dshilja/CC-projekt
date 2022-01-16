@@ -82,7 +82,7 @@ class ProductResource {
         // should consider using MapStruct.
         productModel.setProductName(productRequest.getProductName());
         productModel.setPrice(productRequest.getPrice());
-        productModel.setCategory(productRequest.getCategory());
+        productModel.setCity(productRequest.getCity());
         productModel.setAddress(productRequest.getAddress());
         productModel.setTelephone(productRequest.getTelephone());
         log.info("Saving product {}", productModel);

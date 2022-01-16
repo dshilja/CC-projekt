@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS products (
   product_name VARCHAR(30),
   price VARCHAR(30),
   address VARCHAR(255),
-  category VARCHAR(30),
+  city VARCHAR(80),
   telephone VARCHAR(20),
-  INDEX(product_name)
+  INDEX(price)
 ) engine=InnoDB;
