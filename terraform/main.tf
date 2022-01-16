@@ -24,10 +24,7 @@ variable "customers_service" {
   type    = string
   default = "customers-service"
 }
-variable "visits_service" {
-  type    = string
-  default = "visits-service"
-}
+
 variable "vets_service" {
   type    = string
   default = "vets-service"
@@ -94,13 +91,6 @@ resource "azurerm_spring_cloud_app" "vets_service" {
   resource_group_name = azurerm_resource_group.example.name
   service_name        = azurerm_spring_cloud_service.example.name
 }
-
-resource "azurerm_spring_cloud_app" "visits_service" {
-  name                = var.visits_service
-  resource_group_name = azurerm_resource_group.example.name
-  service_name        = azurerm_spring_cloud_service.example.name
-}
-
 
 resource "azurerm_mysql_server" "example" {
   name                = local.mysql_server_name

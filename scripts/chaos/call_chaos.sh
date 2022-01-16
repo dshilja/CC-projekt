@@ -29,9 +29,6 @@ case $1 in
     customers)
         PORT=8081
         ;;
-    visits)
-        PORT=8082
-        ;;
     vets)
         PORT=8083
         ;;

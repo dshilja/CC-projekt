@@ -27,7 +27,7 @@
     </tr>
 </table>
 
-<h2>Pets and Visits</h2>
+<h2>Pets</h2>
 
 <table class="table table-striped">
     <tr ng-repeat="pet in $ctrl.product.pets track by pet.id">
@@ -40,28 +40,6 @@
                 <dt>Type</dt>
                 <dd>{{pet.type.name}}</dd>
             </dl>
-        </td>
-        <td valign="top">
-            <table class="table-condensed">
-                <thead>
-                <tr>
-                    <th>Visit Date</th>
-                    <th>Description</th>
-                </tr>
-                </thead>
-                <tr ng-repeat="visit in pet.visits track by visit.id">
-                    <td>{{visit.date | date:'yyyy MMM dd'}}</td>
-                    <td>{{visit.description}}</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a ui-sref="petEdit({productId: $ctrl.product.id, petId: pet.id})">Edit Pet</a>
-                    </td>
-                    <td>
-                        <a ui-sref="visits({productId: $ctrl.product.id, petId: pet.id})">Add Visit</a>
-                    </td>
-                </tr>
-            </table>
         </td>
     </tr>
 </table>

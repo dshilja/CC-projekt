@@ -19,9 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreakerFactory;
 import org.springframework.samples.petclinic.api.application.CustomersServiceClient;
-import org.springframework.samples.petclinic.api.application.VisitsServiceClient;
 import org.springframework.samples.petclinic.api.dto.ProductDetails;
-import org.springframework.samples.petclinic.api.dto.Visits;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,34 +39,8 @@ public class ApiGatewayController {
 
     private final CustomersServiceClient customersServiceClient;
 
-    private final VisitsServiceClient visitsServiceClient;
-
-    private final ReactiveCircuitBreakerFactory cbFactory;
-
     @GetMapping(value = "products/{productId}")
     public Mono<ProductDetails> getProductDetails(final @PathVariable int productId) {
-        return customersServiceClient.getProduct(productId)
-                .flatMap(product -> visitsServiceClient.getVisitsForPets(product.getPetIds())
-                        .transform(it -> {
-                            ReactiveCircuitBreaker cb = cbFactory.create("getProductDetails");
-                            return cb.run(it, throwable -> emptyVisitsForPets());
-                        })
-                        .map(addVisitsToProduct(product)));
-
-    }
-
-    private Function<Visits, ProductDetails> addVisitsToProduct(ProductDetails product) {
-        return visits -> {
-            product.getPets()
-                    .forEach(pet -> pet.getVisits()
-                            .addAll(visits.getItems().stream()
-                                    .filter(v -> v.getPetId() == pet.getId())
-                                    .collect(Collectors.toList())));
-            return product;
-        };
-    }
-
-    private Mono<Visits> emptyVisitsForPets() {
-        return Mono.just(new Visits());
+        return customersServiceClient.getProduct(productId);
     }
 }
