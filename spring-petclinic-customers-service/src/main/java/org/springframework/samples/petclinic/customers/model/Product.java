@@ -58,9 +58,9 @@ public class Product {
     @NotEmpty
     private String productName;
 
-    @Column(name = "price")
+    @Column(name = "last_name")
     @NotEmpty
-    private String price;
+    private String lastName;
 
     @Column(name = "address")
     @NotEmpty
@@ -87,12 +87,12 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getPrice() {
-        return price;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setPrice(final String price) {
-        this.price = price;
+    public void setLastName(final String lastName) {
+        this.lastName = lastName;
     }
 
     public String getAddress() {
@@ -124,7 +124,7 @@ public class Product {
         return new ToStringCreator(this)
 
                 .append("id", this.getId())
-                .append("price", this.getPrice())
+                .append("lastName", this.getLastName())
                 .append("productName", this.getProductName())
                 .append("address", this.address)
                 .append("city", this.city)
