@@ -31,13 +31,13 @@ public class ProductDetails {
 
     private int id;
 
-    private String name;
-
-    private String type;
+    private String productName;
 
     private String price;
 
-    private String description;
+    private String address;
 
-    private String img_url;
+    private String category;
+
+    private String telephone;
 }

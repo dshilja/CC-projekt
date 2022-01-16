@@ -5,10 +5,10 @@ USE petclinic;
 
 CREATE TABLE IF NOT EXISTS products (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(30),
-  type VARCHAR(30),
+  product_name VARCHAR(30),
   price VARCHAR(30),
-  description VARCHAR(255),
-  img_url VARCHAR(80),
-  INDEX(name)
+  address VARCHAR(255),
+  category VARCHAR(30),
+  telephone VARCHAR(20),
+  INDEX(product_name)
 ) engine=InnoDB;
